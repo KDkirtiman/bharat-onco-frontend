@@ -1,73 +1,66 @@
-# React + TypeScript + Vite
+# Bharat Oncology — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository holds the **Bharat Oncology** web frontend workbench: a **React** application built with **Vite**, plus a **Storybook**-documented design system (tokens, primitives, layouts, and composed screens).
 
-Currently, two official plugins are available:
+The runnable package is under **`design-system/`**. Install dependencies and run scripts from that folder.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Quick start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd design-system
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **App (Vite)** — dev server URL is printed in the terminal (usually `http://localhost:5173`). The shell is intentionally small; most UI work happens in components and stories.
+- **Storybook** — `npm run storybook`, then open `http://localhost:6006` to browse the component catalog.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## What lives where
+
+| Area | Location |
+|------|----------|
+| Design tokens (CSS variables) | `design-system/src/designSystem/tokens/` |
+| Core UI (Button, Card, fields, typography, etc.) | `design-system/src/designSystem/core/` |
+| Icons | `design-system/src/designSystem/icons/` |
+| Navigation (e.g. sidebar) | `design-system/src/designSystem/navigation/` |
+| Tables, pagination, toolbar | `design-system/src/designSystem/tables/` |
+| Dashboard-style widgets | `design-system/src/designSystem/widgets/` |
+| Full-page demos / layouts | `design-system/src/designSystem/pages/` |
+| Storybook stories | `*.stories.tsx` next to components |
+| Storybook config | `design-system/.storybook/` |
+
+---
+
+## Scripts (run inside `design-system/`)
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Vite dev server with HMR |
+| `npm run build` | Typecheck + production build |
+| `npm run preview` | Serve the production build locally |
+| `npm run storybook` | Storybook on port **6006** |
+| `npm run build-storybook` | Static Storybook output → `storybook-static/` (ignored by git) |
+| `npm test` | Vitest (includes Storybook test integration) |
+
+---
+
+## Prerequisites
+
+- **Node.js** 18+ (see `engines` in `design-system/package.json`)
+- **npm**
+
+---
+
+## More detail
+
+See **`design-system/README.md`** for repository layout, Storybook wiring, and story groupings.
+
+---
+
+## License
+
+**ISC** — see `design-system/package.json`.
