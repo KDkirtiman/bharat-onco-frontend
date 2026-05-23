@@ -43,8 +43,23 @@
 }
 
 .info {
-  background: rgba(99, 102, 241, 0.12);
-  color: rgba(49, 46, 129, 1);
-  border-color: rgba(99, 102, 241, 0.2);
+  background: var(--ds-color-info-bg);
+  color: var(--ds-color-info);
+  border-color: color-mix(in srgb, var(--ds-color-info) 25%, transparent);
+}
+
+.dotOnly {
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
 }
 

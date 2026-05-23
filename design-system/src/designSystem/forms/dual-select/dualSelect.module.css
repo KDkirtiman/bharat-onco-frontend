@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--ds-space-3);
+  flex-wrap: wrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+  flex: 1;
+  min-width: 180px;
+}
+
+.label {
+  font-size: var(--ds-font-size-sm);
+  font-weight: 600;
+  color: var(--ds-color-text);
+}
+
+.separator {
+  padding-bottom: var(--ds-space-3);
+  color: var(--ds-color-muted);
+  font-size: var(--ds-font-size-lg);
+}

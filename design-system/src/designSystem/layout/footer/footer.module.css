@@ -1,0 +1,17 @@
+.root {
+  padding: var(--ds-space-6);
+  border-top: 1px solid var(--ds-color-border);
+  background: var(--ds-color-surface);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--ds-space-4);
+  margin-bottom: var(--ds-space-4);
+}
+
+.copyright {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-muted);
+}

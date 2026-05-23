@@ -1,0 +1,80 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-text);
+  font-weight: 600;
+}
+
+.value {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-muted);
+}
+
+.trackWrap {
+  position: relative;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-color-border);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--ds-color-interactive);
+  border-radius: inherit;
+}
+
+.input {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  height: 24px;
+  cursor: pointer;
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ds-color-interactive);
+  border: 2px solid var(--ds-color-surface);
+  box-shadow: var(--ds-shadow-button);
+}
+
+.input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ds-color-interactive);
+  border: 2px solid var(--ds-color-surface);
+  box-shadow: var(--ds-shadow-button);
+}

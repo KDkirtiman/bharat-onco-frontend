@@ -1,0 +1,9 @@
+# OS & editors
+.DS_Store
+Thumbs.db
+*.swp
+.idea
+.vscode/*
+
+# Local Cursor config (optional per developer)
+.cursor

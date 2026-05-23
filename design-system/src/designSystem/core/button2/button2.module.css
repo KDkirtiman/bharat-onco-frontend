@@ -1,0 +1,69 @@
+.root {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: var(--ds-radius-sm);
+  border: 1px solid var(--ds-color-border);
+  background: var(--ds-color-surface);
+  overflow: hidden;
+}
+
+.iconButton {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--ds-color-text);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.iconButton:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ds-color-interactive) 8%, var(--ds-color-surface));
+}
+
+.iconButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primary .iconButton {
+  color: var(--ds-color-on-interactive);
+  background: var(--ds-color-interactive);
+}
+
+.primary .iconButton:hover:not(:disabled) {
+  background: var(--ds-color-interactive-hover);
+}
+
+.compact .iconButton {
+  width: 28px;
+  height: 28px;
+}
+
+.default .iconButton {
+  width: 36px;
+  height: 36px;
+}
+
+.comfortable .iconButton {
+  width: 44px;
+  height: 44px;
+}
+
+.split {
+  border-left: 1px solid var(--ds-color-border);
+}
+
+.primary .split {
+  border-left-color: color-mix(in srgb, var(--ds-color-on-interactive) 25%, transparent);
+}
+
+.splitButton {
+  width: 28px;
+}
+
+.comfortable .splitButton {
+  width: 36px;
+}

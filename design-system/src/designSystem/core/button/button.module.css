@@ -47,6 +47,17 @@
   border-color: transparent;
 }
 
+.danger {
+  background: var(--ds-color-danger);
+  color: var(--ds-color-on-interactive);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
 .sm {
   padding: 8px 12px;
   font-size: var(--ds-font-size-md);
@@ -92,5 +103,22 @@
   opacity: 0.6;
   box-shadow: none;
   transform: none;
+}
+
+.grouped {
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.grouped_last,
+.grouped_single {
+  border-top-right-radius: var(--ds-radius-md);
+  border-bottom-right-radius: var(--ds-radius-md);
+}
+
+.grouped_first,
+.grouped_single {
+  border-top-left-radius: var(--ds-radius-md);
+  border-bottom-left-radius: var(--ds-radius-md);
 }
 

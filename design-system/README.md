@@ -1,118 +1,71 @@
-# Bharat Oncology — Frontend
+# Bharat Oncology — Design System
 
-React + Vite workspace for the Bharat Oncology UI. The runnable **app shell** is minimal; components and stories live under **`src/designSystem/`** and are documented in **Storybook**.
+Self-contained React + Vite package with Storybook. Components live under **`src/designSystem/`**.
+
+This folder is designed to be **moved as-is** into its own repository when ready — it includes its own `package.json`, lockfile, configs, and `.gitignore`.
 
 ---
 
 ## Prerequisites
 
-- **Node.js** 18 or newer ([`engines.node`](package.json))
-- **npm** (ships with Node)
+- **Node.js** 18 or newer
+- **npm**
 
 ---
 
-## Install
+## Install & run
 
-From the repository root:
+From **this folder** (`design-system/`):
 
 ```bash
 npm install
-```
-
----
-
-## Run the Vite application
-
-Starts the dev server with hot reload (URL in the terminal, typically **http://localhost:5173**):
-
-```bash
-npm run dev
-```
-
-- **`src/main.tsx`** — entry; imports **`src/designSystem/tokens/globals.css`**
-- **`src/App.tsx`** — minimal placeholder pointing you to Storybook
-
-Production build:
-
-```bash
-npm run build
-npm run preview
+npm run dev          # Vite app → http://localhost:5173
+npm run storybook    # Storybook → http://localhost:6006
 ```
 
 ---
 
 ## Storybook (design system)
 
-### Start Storybook
+- **Theme toolbar** — switch `default` / `contrast` token presets
+- **Docs → Try it live** — interactive `react-live` playground on each component's Docs tab
+- **Playground/Composition** — multi-component sandbox
+- See **[COMPONENTS.md](./COMPONENTS.md)** for the full component checklist
 
-```bash
-npm run storybook
-```
-
-Open **http://localhost:6006**.
-
-### Static build (optional)
-
-```bash
-npm run build-storybook
-```
-
-Output: **`storybook-static/`** (gitignored). Deploy that folder for a hosted component catalog.
-
-### Wiring
-
-| Item | Location |
-|------|----------|
-| Stories glob | [`src/designSystem/**/*.stories.*`](.storybook/main.ts) |
-| Global CSS tokens | [`src/designSystem/tokens/globals.css`](src/designSystem/tokens/globals.css) (also imported in [`.storybook/preview.ts`](.storybook/preview.ts)) |
+Static build: `npm run build-storybook`
 
 ---
 
 ## Repository layout
 
 ```
-├── .storybook/          # Storybook config
-├── src/
-│   ├── designSystem/    # Tokens, components, Storybook stories
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── vite-env.d.ts
-├── index.html
-├── package.json         # dependencies & scripts (single source of truth)
-├── package-lock.json    # lockfile (npm)
-├── tsconfig.json
-├── vite.config.ts
-└── vitest.config.ts
+src/designSystem/
+├── tokens/          # globals.css, ThemeProvider, theme presets
+├── utils/           # cn, Portal, hooks, ClickAwayListener, …
+├── core/            # Avatar, Button, Card, Accordion, Title, …
+├── forms/           # TextField, Select, DatePicker, OtpField, …
+├── feedback/        # Modal, Snackbar, Banner, Tooltip, …
+├── layout/          # Shell, Header, Footer
+├── navigation/      # Sidebar, Menu, Tabs, ActionBar, …
+├── data/            # List, Tag, Stepper, Carousel, Workflow, …
+├── playground/      # Live composition editor
+├── icons/ tables/ widgets/ pages/
+└── index.ts         # public barrel export
 ```
 
-| Path | Purpose |
-|------|--------|
-| **`src/designSystem/tokens/`** | CSS variables — `globals.css` |
-| **`src/designSystem/core/`** | Button, Card, TextField, Badge, Avatar, Typography, PageHeader |
-| **`src/designSystem/icons/`** | `Icon` + glyphs |
-| **`src/designSystem/navigation/`** | Sidebar |
-| **`src/designSystem/widgets/`** | Metric cards, activity rows, etc. |
-| **`src/designSystem/tables/`** | Data table, toolbar, pagination |
-| **`src/designSystem/pages/`** | Full-page compositions (e.g. app shell + patient list) |
-
-### Storybook groups (by story `title`)
-
-- **Core/** — primitives  
-- **Icons/** — icon set  
-- **Navigation/** — sidebar  
-- **Widgets/** — dashboard widgets  
-- **Tables/** — data table  
-- **Pages/** — full layouts  
+Storybook config: `.storybook/`
 
 ---
 
-## Tests
+## Theming
 
-```bash
-npm test
+Components use semantic CSS variables (`--ds-*`) only. Override tokens globally, per theme (`data-ds-theme`), or via `ThemeProvider` `overrides`. Wrap your app:
+
+```tsx
+import { ThemeProvider } from '@/designSystem';
+
+<ThemeProvider theme="contrast">…</ThemeProvider>
 ```
-
-Vitest + Storybook addon (see `vitest.config.ts`).
 
 ---
 
@@ -122,22 +75,21 @@ Vitest + Storybook addon (see `vitest.config.ts`).
 |---------|-------------|
 | `npm run dev` | Vite dev server |
 | `npm run build` | Typecheck + production build |
-| `npm run preview` | Serve production build |
+| `npm run preview` | Serve production build locally |
 | `npm run storybook` | Storybook on port **6006** |
-| `npm run build-storybook` | Static Storybook → `storybook-static/` |
-| `npm test` | Vitest |
+| `npm run build-storybook` | Static Storybook output |
+| `npm test` | Vitest (Storybook browser tests) |
+| `npm run test:coverage` | Tests with coverage report |
+| `npm run chromatic` | Visual regression (needs `CHROMATIC_PROJECT_TOKEN`) |
 
 ---
 
-## Dependencies
+## Tests & CI
 
-Resolved versions are pinned in **`package-lock.json`**. Declared ranges are in **`package.json`**:
-
-- **dependencies** — `react`, `react-dom`
-- **devDependencies** — TypeScript, Vite, Storybook add-ons, ESLint, Vitest, Playwright, typings, etc.
+CI (`.github/workflows/design-system-ci.yml`) runs tests, coverage, Storybook build, optional Chromatic, and deploys to **GitHub Pages** on `main`.
 
 ---
 
 ## License
 
-ISC — see `package.json`.
+ISC

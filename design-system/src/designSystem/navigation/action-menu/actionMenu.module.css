@@ -1,0 +1,43 @@
+.root {
+  display: inline-flex;
+}
+
+.menuItem {
+  appearance: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  padding: var(--ds-space-2) var(--ds-space-3);
+  border: none;
+  border-radius: var(--ds-radius-sm);
+  background: transparent;
+  color: var(--ds-color-text);
+  font: inherit;
+  font-size: var(--ds-font-size-sm);
+  text-align: left;
+  cursor: pointer;
+}
+
+.menuItem:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ds-color-interactive) 8%, var(--ds-color-surface));
+}
+
+.menuItem:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.destructive {
+  color: var(--ds-color-danger);
+}
+
+.destructive:hover:not(:disabled) {
+  background: var(--ds-color-danger-bg);
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--ds-color-muted);
+}

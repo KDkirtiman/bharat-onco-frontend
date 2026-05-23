@@ -3,9 +3,11 @@ import type { ComponentType } from 'react';
 import type { GlyphProps } from './glyphs';
 import {
   CalendarIcon,
+  ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   HeartIcon,
+  MoreVerticalIcon,
   LayoutDashboardIcon,
   LogoutIcon,
   PanelLeftCloseIcon,
@@ -20,8 +22,10 @@ export type IconName =
   | 'search'
   | 'user'
   | 'logout'
+  | 'chevronDown'
   | 'chevronLeft'
   | 'chevronRight'
+  | 'moreVertical'
   | 'panelLeftClose'
   | 'layoutDashboard'
   | 'calendar'
@@ -32,8 +36,10 @@ const MAP: Record<IconName, ComponentType<GlyphProps>> = {
   search: SearchIcon,
   user: UserIcon,
   logout: LogoutIcon,
+  chevronDown: ChevronDownIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
+  moreVertical: MoreVerticalIcon,
   panelLeftClose: PanelLeftCloseIcon,
   layoutDashboard: LayoutDashboardIcon,
   calendar: CalendarIcon,

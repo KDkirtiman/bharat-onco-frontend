@@ -1,0 +1,30 @@
+.root {
+  display: inline-flex;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 480px;
+}
+
+.item {
+  margin: 0 !important;
+  min-width: 0;
+}
+
+.first,
+.middle,
+.single {
+  flex: 1 1 auto;
+}
+
+.last {
+  flex: 0 0 auto;
+}
+
+.root > :not(:first-child) {
+  margin-left: -1px;
+}
+
+.root > :focus-within {
+  position: relative;
+  z-index: 1;
+}

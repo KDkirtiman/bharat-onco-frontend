@@ -1,0 +1,44 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-3);
+}
+
+.label {
+  font-size: var(--ds-font-size-sm);
+  font-weight: 600;
+  color: var(--ds-color-text);
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-2);
+}
+
+.presetBtn {
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-pill);
+  padding: var(--ds-space-1) var(--ds-space-3);
+  background: var(--ds-color-surface);
+  color: var(--ds-color-text);
+  font: inherit;
+  font-size: var(--ds-font-size-sm);
+  cursor: pointer;
+}
+
+.presetBtn:hover:not(:disabled) {
+  border-color: var(--ds-color-interactive);
+  color: var(--ds-color-interactive);
+}
+
+.presetBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pickers {
+  display: flex;
+  gap: var(--ds-space-4);
+  flex-wrap: wrap;
+}

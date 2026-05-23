@@ -1,0 +1,57 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+}
+
+.label {
+  font-size: var(--ds-font-size-sm);
+  font-weight: 600;
+  color: var(--ds-color-text);
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface);
+  overflow: hidden;
+}
+
+.wrap:focus-within {
+  outline: 2px solid var(--ds-color-focus);
+  outline-offset: 2px;
+}
+
+.error {
+  border-color: var(--ds-color-danger);
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+.prefix {
+  padding: var(--ds-space-3) var(--ds-space-3);
+  background: color-mix(in srgb, var(--ds-color-border) 40%, var(--ds-color-surface));
+  font-size: var(--ds-font-size-sm);
+  font-weight: 600;
+  color: var(--ds-color-muted);
+}
+
+.input {
+  flex: 1;
+  border: none;
+  padding: var(--ds-space-3) var(--ds-space-4);
+  font: inherit;
+  font-size: var(--ds-font-size-md);
+  color: var(--ds-color-text);
+  background: transparent;
+  outline: none;
+}
+
+.errorText {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-danger);
+}

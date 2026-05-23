@@ -1,0 +1,12 @@
+[data-ds-theme='contrast'] {
+  --ds-color-bg: #0b1220;
+  --ds-color-surface: #111827;
+  --ds-color-text: #f9fafb;
+  --ds-color-muted: rgba(249, 250, 251, 0.72);
+  --ds-color-border: rgba(249, 250, 251, 0.16);
+  --ds-color-focus: #38bdf8;
+  --ds-accent-1: #38bdf8;
+  --ds-accent-2: #818cf8;
+  --ds-shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --ds-shadow-button: 0 12px 24px rgba(0, 0, 0, 0.4);
+}

@@ -11,6 +11,7 @@ storybook-static
 .vite
 .cursor
 coverage
+tsconfig.tsbuildinfo
 
 # Environment
 .env

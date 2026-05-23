@@ -25,6 +25,25 @@ export type SidebarProps = {
   className?: string;
 };
 
+function CollapseToggle({
+  collapsed,
+  onToggleCollapse,
+}: {
+  collapsed: boolean;
+  onToggleCollapse: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      className={styles.collapseBtn}
+      onClick={onToggleCollapse}
+      aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+    >
+      <Icon name={collapsed ? 'chevronRight' : 'panelLeftClose'} size="sm" />
+    </button>
+  );
+}
+
 export function Sidebar({
   brandSlot,
   items,
@@ -42,15 +61,8 @@ export function Sidebar({
     >
       <div className={styles.top}>
         <div className={styles.brand}>{brandSlot}</div>
-        {onToggleCollapse ? (
-          <button
-            type="button"
-            className={styles.collapseBtn}
-            onClick={onToggleCollapse}
-            aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          >
-            <Icon name="panelLeftClose" size="sm" />
-          </button>
+        {onToggleCollapse && !collapsed ? (
+          <CollapseToggle collapsed={collapsed} onToggleCollapse={onToggleCollapse} />
         ) : null}
       </div>
       <nav className={styles.nav} role="navigation">
@@ -62,6 +74,8 @@ export function Sidebar({
                 className={[styles.item, activeId === item.id ? styles.active : ''].join(' ')}
                 onClick={() => onSelect?.(item.id)}
                 aria-current={activeId === item.id ? 'page' : undefined}
+                aria-label={collapsed ? item.label : undefined}
+                title={collapsed ? item.label : undefined}
               >
                 <Icon name={item.icon} size="md" />
                 <span className={styles.label}>{item.label}</span>
@@ -70,7 +84,14 @@ export function Sidebar({
           ))}
         </ul>
       </nav>
-      {footer ? <div className={styles.footer}>{footer}</div> : null}
+      {onToggleCollapse || footer ? (
+        <div className={styles.bottom}>
+          {footer ? <div className={styles.footer}>{footer}</div> : null}
+          {onToggleCollapse && collapsed ? (
+            <CollapseToggle collapsed={collapsed} onToggleCollapse={onToggleCollapse} />
+          ) : null}
+        </div>
+      ) : null}
     </aside>
   );
 }

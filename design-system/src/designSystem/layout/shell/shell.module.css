@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--ds-color-bg);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.sidebar {
+  flex-shrink: 0;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--ds-space-6);
+}
+
+.footer {
+  flex-shrink: 0;
+}

@@ -1,0 +1,70 @@
+.block {
+  margin: var(--ds-space-4) 0;
+  border-radius: var(--ds-radius-md);
+  border: 1px solid #d0d7de;
+  background: #f6f8fa;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-2);
+  padding: var(--ds-space-2) var(--ds-space-3);
+  border-bottom: 1px solid #d0d7de;
+  background: #eef1f4;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--ds-font-size-sm);
+  font-weight: 600;
+  color: #424a53;
+}
+
+.hint {
+  margin: 0;
+  padding: var(--ds-space-2) var(--ds-space-3) 0;
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-muted);
+  line-height: 1.45;
+}
+
+.copyButton {
+  flex-shrink: 0;
+  padding: var(--ds-space-1) var(--ds-space-3);
+  font-size: var(--ds-font-size-sm);
+  font-weight: 600;
+  font-family: inherit;
+  color: #0969da;
+  background: #fff;
+  border: 1px solid #d0d7de;
+  border-radius: var(--ds-radius-sm);
+  cursor: pointer;
+}
+
+.copyButton:hover {
+  background: #f3f4f6;
+}
+
+.copyButton:focus-visible {
+  outline: 2px solid #0969da;
+  outline-offset: 2px;
+}
+
+.pre {
+  margin: 0;
+  padding: var(--ds-space-3) var(--ds-space-4);
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #1f2328;
+  tab-size: 2;
+  white-space: pre;
+}
+
+.code {
+  display: block;
+}

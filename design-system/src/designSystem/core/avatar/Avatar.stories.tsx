@@ -1,13 +1,47 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Avatar } from './Avatar';
-
 const meta: Meta<typeof Avatar> = {
+  tags: ['autodocs'],
   title: 'Core/Avatar',
   component: Avatar,
-  args: { size: 'md', alt: 'User' },
-};
+    parameters: {
+    docs: {
+      description: { component: "**Avatar** is part of the Core catalog. It is styled only with semantic `--ds-*` tokens so your product theme can override colors and typography without changing component code." },
+      subtitle: "Avatar component",
+      guide: {
+  "whenToUse": [
+    "Use **Avatar** in core flows where this UI pattern is needed.",
+    "Prefer composing with other design-system primitives rather than custom markup."
+  ],
+  "capabilities": [
+    "Themeable via CSS variables (`ThemeProvider` or token overrides)",
+    "`className` and standard HTML/React props passthrough where applicable",
+    "Multiple stories demonstrating states and variants"
+  ],
+  "scenarios": [
+    {
+      "title": "Default",
+      "description": "Baseline Avatar configuration.",
+      "story": "Default"
+    }
+  ]
+},
+    },
+    liveCode: `render(<Avatar alt="User" fallback="AB" size="lg" />);`,
+        usageCode: `import { Avatar } from '@/designSystem';
 
+export function Example() {
+  return (
+    <Avatar alt="User" fallback="AB" size="lg" />
+  );
+}`,
+  },
+  args: { size: 'md', alt: 'User' },
+  argTypes: {
+    className: { description: "Additional CSS classes merged onto the root element." },
+  },
+};
 export default meta;
 type Story = StoryObj<typeof Avatar>;
 

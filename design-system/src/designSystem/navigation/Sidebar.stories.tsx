@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { Button } from '../core/button/Button';
 import { Icon } from '../icons/Icon';
+import { Logo } from '../icons/Logo';
 
 import { Sidebar } from './Sidebar';
-
+import styles from './sidebar.module.css';
 const nav = [
   { id: 'dash', label: 'Dashboard', icon: 'layoutDashboard' as const },
   { id: 'calendar', label: 'Visit Calendar', icon: 'calendar' as const },
@@ -15,10 +16,51 @@ const nav = [
 ];
 
 const meta: Meta<typeof Sidebar> = {
+  tags: ['autodocs'],
   title: 'Navigation/Sidebar',
   component: Sidebar,
-};
+    parameters: {
+    docs: {
+      description: { component: "**Sidebar** is part of the Navigation catalog. It is styled only with semantic `--ds-*` tokens so your product theme can override colors and typography without changing component code." },
+      subtitle: "Sidebar component",
+      guide: {
+  "whenToUse": [
+    "Use **Sidebar** in navigation flows where this UI pattern is needed.",
+    "Prefer composing with other design-system primitives rather than custom markup."
+  ],
+  "capabilities": [
+    "Themeable via CSS variables (`ThemeProvider` or token overrides)",
+    "`className` and standard HTML/React props passthrough where applicable",
+    "Multiple stories demonstrating states and variants"
+  ],
+  "scenarios": [
+    {
+      "title": "Default",
+      "description": "Baseline Sidebar configuration.",
+      "story": "Default"
+    }
+  ]
+},
+    },
+    liveCode: `render(<Sidebar items={[{ id: 'home', label: 'Home', icon: 'layoutDashboard' }, { id: 'patients', label: 'Patients', icon: 'users' }]} activeId="home" />);`,
+        usageCode: `import { Sidebar } from '@/designSystem';
 
+export function Example() {
+  return (
+    <Sidebar
+      items={[
+        { id: 'home', label: 'Home', icon: 'layoutDashboard' },
+        { id: 'patients', label: 'Patients', icon: 'users' },
+      ]}
+      activeId="home"
+    />
+  );
+}`,
+  },
+  argTypes: {
+    className: { description: "Additional CSS classes merged onto the root element." },
+  },
+};
 export default meta;
 type Story = StoryObj<typeof Sidebar>;
 
@@ -30,11 +72,7 @@ export const Interactive: Story = {
     return (
       <div style={{ display: 'flex', minHeight: '100vh' }}>
         <Sidebar
-          brandSlot={
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <Icon name="heart" size="md" /> Bharat Oncology
-            </span>
-          }
+          brandSlot={<Logo size={collapsed ? 'sm' : 'lg'} />}
           items={nav}
           activeId={activeId}
           collapsed={collapsed}
@@ -51,7 +89,8 @@ export const Interactive: Story = {
               onClick={() => action('logout')()}
             >
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                <Icon name="logout" size="sm" /> Logout
+                <Icon name="logout" size="sm" />
+                <span className={styles.label}>Logout</span>
               </span>
             </Button>
           }

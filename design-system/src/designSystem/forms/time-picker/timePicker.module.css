@@ -1,0 +1,41 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+  min-width: 160px;
+}
+
+.label {
+  font-size: var(--ds-font-size-sm);
+  font-weight: 600;
+  color: var(--ds-color-text);
+}
+
+.input {
+  padding: var(--ds-space-3) var(--ds-space-4);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface);
+  color: var(--ds-color-text);
+  font: inherit;
+  font-size: var(--ds-font-size-md);
+}
+
+.input:focus {
+  outline: 2px solid var(--ds-color-focus);
+  outline-offset: 2px;
+}
+
+.error {
+  border-color: var(--ds-color-danger);
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.errorText {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-danger);
+}

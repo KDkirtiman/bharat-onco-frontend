@@ -1,0 +1,70 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+  width: 100%;
+}
+
+.line {
+  display: block;
+  height: 12px;
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-color-border);
+  width: 100%;
+}
+
+.short {
+  width: 60%;
+}
+
+.medium {
+  width: 80%;
+}
+
+.card {
+  height: 120px;
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-border);
+  width: 100%;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--ds-color-border);
+  flex-shrink: 0;
+}
+
+.avatarText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+}
+
+.root:has(.avatar) {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--ds-space-3);
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--ds-color-border) 25%,
+    color-mix(in srgb, var(--ds-color-border) 50%, var(--ds-color-surface)) 50%,
+    var(--ds-color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

@@ -1,0 +1,18 @@
+.popup {
+  position: fixed;
+  z-index: var(--ds-z-dropdown);
+  min-width: 180px;
+  padding: var(--ds-space-1);
+  border-radius: var(--ds-radius-md);
+  border: 1px solid var(--ds-color-border);
+  background: var(--ds-color-surface-raised);
+  box-shadow: var(--ds-shadow-overlay);
+}
+
+.alignStart {
+  transform-origin: top left;
+}
+
+.alignEnd {
+  transform-origin: top right;
+}

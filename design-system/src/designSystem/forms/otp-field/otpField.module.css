@@ -1,0 +1,29 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+}
+
+.input {
+  width: 44px;
+  height: 52px;
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface);
+  color: var(--ds-color-text);
+  font: inherit;
+  font-size: var(--ds-font-size-lg);
+  font-weight: 600;
+  text-align: center;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.input:focus-visible {
+  border-color: var(--ds-color-interactive);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ds-color-interactive) 25%, transparent);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

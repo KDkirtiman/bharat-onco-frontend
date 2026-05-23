@@ -1,0 +1,82 @@
+.root {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--ds-space-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.control {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+  width: 100%;
+  height: 100%;
+}
+
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ds-color-border-strong);
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-color-surface);
+  color: var(--ds-color-on-interactive);
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.sm .indicator {
+  width: 16px;
+  height: 16px;
+}
+
+.md .indicator {
+  width: 20px;
+  height: 20px;
+}
+
+.input:checked + .indicator,
+.input:indeterminate + .indicator {
+  background: var(--ds-color-interactive);
+  border-color: var(--ds-color-interactive);
+}
+
+.input:focus-visible + .indicator {
+  outline: 3px solid color-mix(in srgb, var(--ds-color-focus) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.checkIcon {
+  width: 12px;
+  height: 10px;
+}
+
+.indeterminateMark {
+  width: 10px;
+  height: 2px;
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-color-on-interactive);
+}
+
+.label {
+  font-size: var(--ds-font-size-md);
+  color: var(--ds-color-text);
+  line-height: var(--ds-line-height);
+}
+
+.sm .label {
+  font-size: var(--ds-font-size-sm);
+}

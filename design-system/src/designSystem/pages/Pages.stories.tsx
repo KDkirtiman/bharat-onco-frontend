@@ -6,16 +6,22 @@ import { useState } from 'react';
 import { Button } from '../core/button/Button';
 import { Card } from '../core/card/Card';
 import { Icon } from '../icons/Icon';
+import { Logo } from '../icons/Logo';
 import { Sidebar } from '../navigation/Sidebar';
 import { ActivityListItem } from '../widgets/ActivityListItem';
 import { MetricCard } from '../widgets/MetricCard';
 
 import shellStyles from './appShell.module.css';
 import { PatientListDemo } from './PatientListDemo';
-
 const meta: Meta = {
   title: 'Pages/Compositions',
   parameters: {
+    liveCode: `render(<PatientListDemo />);`,
+    usageCode: `import { PatientListDemo } from '@/designSystem';
+
+export function Example() {
+  return <PatientListDemo />;
+}`,
     layout: 'fullscreen',
     docs: {
       description: {
@@ -57,11 +63,7 @@ export const PatientsFullAppShell: Story = {
     return (
       <div className={shellStyles.shell}>
         <Sidebar
-          brandSlot={
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <Icon name="heart" size="md" /> Bharat Oncology
-            </span>
-          }
+          brandSlot={<Logo size="lg" />}
           items={clinicianNav}
           activeId={route}
           onSelect={(id) => {
@@ -123,12 +125,11 @@ export const StaffDashboardPage: Story = {
       <div className={shellStyles.mainInner}>
         <header className={shellStyles.dashboardHeader}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <Icon name="heart" size="lg" />
-              <div>
-                <h1 className={shellStyles.dashboardTitle}>Bharat Oncology</h1>
-                <p className={shellStyles.dashboardMeta}>Staff Dashboard · Staff Member</p>
-              </div>
+            <div>
+              <Logo size="lg" />
+              <p className={shellStyles.dashboardMeta} style={{ marginTop: 8 }}>
+                Staff Dashboard · Staff Member
+              </p>
             </div>
           </div>
           <Button variant="ghost" onClick={() => action('logout')()}>

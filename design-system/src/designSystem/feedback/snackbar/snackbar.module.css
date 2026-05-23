@@ -1,0 +1,118 @@
+.container {
+  position: fixed;
+  z-index: var(--ds-z-snackbar);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+  pointer-events: none;
+  padding: var(--ds-space-4);
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+  align-items: flex-start;
+}
+
+.top-center {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+}
+
+.top-right {
+  top: 0;
+  right: 0;
+  align-items: flex-end;
+}
+
+.bottom-left {
+  bottom: 0;
+  left: 0;
+  align-items: flex-start;
+}
+
+.bottom-center {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+}
+
+.bottom-right {
+  bottom: 0;
+  right: 0;
+  align-items: flex-end;
+}
+
+.snackbar {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+  min-width: 280px;
+  max-width: min(480px, calc(100vw - var(--ds-space-8)));
+  padding: var(--ds-space-3) var(--ds-space-4);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface);
+  color: var(--ds-color-text);
+  box-shadow: var(--ds-shadow-card);
+  pointer-events: auto;
+}
+
+.message {
+  flex: 1;
+  font-size: var(--ds-font-size-sm);
+  line-height: var(--ds-line-height);
+}
+
+.action {
+  flex-shrink: 0;
+}
+
+.dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: var(--ds-radius-sm);
+  background: transparent;
+  color: var(--ds-color-muted);
+  font-size: var(--ds-font-size-lg);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dismiss:hover {
+  background: color-mix(in srgb, var(--ds-color-text) 6%, transparent);
+  color: var(--ds-color-text);
+}
+
+.neutral {
+  border-color: var(--ds-color-border);
+}
+
+.success {
+  border-color: color-mix(in srgb, var(--ds-color-success) 35%, var(--ds-color-border));
+  background: var(--ds-color-success-bg);
+}
+
+.warning {
+  border-color: color-mix(in srgb, var(--ds-color-warning) 35%, var(--ds-color-border));
+  background: var(--ds-color-warning-bg);
+}
+
+.danger {
+  border-color: color-mix(in srgb, var(--ds-color-danger) 35%, var(--ds-color-border));
+  background: var(--ds-color-danger-bg);
+}
+
+.info {
+  border-color: color-mix(in srgb, var(--ds-color-info) 35%, var(--ds-color-border));
+  background: var(--ds-color-info-bg);
+}

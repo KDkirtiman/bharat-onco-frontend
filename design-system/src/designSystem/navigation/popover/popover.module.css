@@ -1,0 +1,15 @@
+.root {
+  display: inline-flex;
+}
+
+.content {
+  z-index: var(--ds-z-dropdown);
+  min-width: 200px;
+  padding: var(--ds-space-4);
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  box-shadow: var(--ds-shadow-overlay);
+  color: var(--ds-color-text);
+  font-size: var(--ds-font-size-md);
+}

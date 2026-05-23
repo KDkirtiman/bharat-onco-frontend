@@ -1,0 +1,43 @@
+.root {
+  display: inline-flex;
+  gap: var(--ds-space-1);
+  outline: none;
+}
+
+.star {
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: var(--ds-color-border);
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  display: inline-flex;
+}
+
+.star:hover:not(:disabled) {
+  color: color-mix(in srgb, var(--ds-color-warning) 70%, var(--ds-color-border));
+}
+
+.filled {
+  color: var(--ds-color-warning);
+}
+
+.half {
+  color: color-mix(in srgb, var(--ds-color-warning) 50%, var(--ds-color-border));
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.disabled .star {
+  cursor: not-allowed;
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--ds-color-focus);
+  outline-offset: 2px;
+  border-radius: var(--ds-radius-sm);
+}
