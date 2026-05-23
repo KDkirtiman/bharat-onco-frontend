@@ -1,0 +1,64 @@
+.banner {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+  padding: var(--ds-space-3) var(--ds-space-4);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  font-size: var(--ds-font-size-sm);
+  line-height: var(--ds-line-height);
+  color: var(--ds-color-text);
+}
+
+.content {
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  flex-shrink: 0;
+}
+
+.dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: var(--ds-radius-sm);
+  background: transparent;
+  color: var(--ds-color-muted);
+  font-size: var(--ds-font-size-lg);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dismiss:hover {
+  background: color-mix(in srgb, var(--ds-color-text) 6%, transparent);
+  color: var(--ds-color-text);
+}
+
+.success {
+  border-color: color-mix(in srgb, var(--ds-color-success) 35%, var(--ds-color-border));
+  background: var(--ds-color-success-bg);
+}
+
+.warning {
+  border-color: color-mix(in srgb, var(--ds-color-warning) 35%, var(--ds-color-border));
+  background: var(--ds-color-warning-bg);
+}
+
+.danger {
+  border-color: color-mix(in srgb, var(--ds-color-danger) 35%, var(--ds-color-border));
+  background: var(--ds-color-danger-bg);
+}
+
+.info {
+  border-color: color-mix(in srgb, var(--ds-color-info) 35%, var(--ds-color-border));
+  background: var(--ds-color-info-bg);
+}

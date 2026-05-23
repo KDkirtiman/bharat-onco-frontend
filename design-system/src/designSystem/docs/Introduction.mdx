@@ -1,0 +1,76 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { Logo } from '../icons/Logo';
+import { DocTable } from './DocTable';
+import { UsageCode } from './UsageCode';
+
+<Meta title="Docs/Introduction" />
+
+<Logo size="lg" />
+
+# Bharat Oncology Design System
+
+Theme-agnostic React components for oncology workflows. Styles use semantic CSS variables (`--ds-*`) so any product can re-skin without forking components.
+
+## How to read each component
+
+Every component in the sidebar includes a **Docs** tab with:
+
+1. **Overview** — what the component does  
+2. **When to use** / **Capabilities** — guidance and feature list  
+3. **Try it live** — playground to experiment (not for copy-paste)  
+4. **Show code** on each story — ready-to-paste TSX with imports (adjust `@/designSystem` to your path)  
+5. **Props reference** — every prop, type, and description  
+6. **Stories** — real scenarios (required fields, errors, sizes, etc.)
+
+Use the **Canvas** tab to tweak props with **Controls** and test **viewports** / **themes** in the toolbar.
+
+## Quick start
+
+<UsageCode
+  title="Quick start"
+  hint={null}
+  code={`import { Button, TextField, ThemeProvider } from './designSystem';
+
+export function Example() {
+  return (
+    <ThemeProvider>
+      <TextField label="Patient ID" />
+      <Button>Continue</Button>
+    </ThemeProvider>
+  );
+}`}
+/>
+
+## Storybook toolbar
+
+<DocTable
+  columns={[
+    { key: 'feature', header: 'Feature' },
+    { key: 'where', header: 'Where' },
+  ]}
+  rows={[
+    { feature: 'Controls', where: 'Canvas — edit props live' },
+    { feature: 'Viewports', where: 'Toolbar — mobile / tablet / desktop' },
+    { feature: 'Themes', where: 'Toolbar — Default / Contrast presets' },
+    { feature: 'Composition', where: 'Playground → Composition — multi-component editor' },
+    { feature: 'Accessibility', where: 'Accessibility panel per story' },
+  ]}
+/>
+
+## Theming
+
+Override tokens in CSS or pass `overrides` to `ThemeProvider`:
+
+```css
+:root {
+  --ds-accent-1: #0066cc;
+  --ds-color-bg: #f5f5f5;
+}
+```
+
+See [Design tokens](./?path=/docs/docs-design-tokens--docs) for the full token list.
+
+## Component catalog
+
+Browse **Core**, **Forms**, **Feedback**, **Navigation**, **Data**, and **Layout** in the sidebar.

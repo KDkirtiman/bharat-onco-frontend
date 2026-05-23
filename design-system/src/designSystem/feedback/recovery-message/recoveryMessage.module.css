@@ -1,0 +1,33 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--ds-space-3);
+  padding: var(--ds-space-6);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface);
+}
+
+.illustration {
+  font-size: var(--ds-font-size-2xl);
+  color: var(--ds-color-muted);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--ds-font-size-lg);
+  color: var(--ds-color-text);
+}
+
+.message {
+  margin: 0;
+  max-width: 420px;
+  font-size: var(--ds-font-size-md);
+  color: var(--ds-color-muted);
+}
+
+.action {
+  margin-top: var(--ds-space-2);
+}

@@ -12,6 +12,6 @@
     "jsx": "react-jsx",
     "strict": true
   },
-  "include": ["src", ".storybook"]
+  "include": ["src", ".storybook", "vite.config.ts", "vitest.config.ts"]
 }
 

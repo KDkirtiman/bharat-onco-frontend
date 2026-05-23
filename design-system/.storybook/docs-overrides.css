@@ -1,0 +1,148 @@
+/* TOC anchor targets (custom docs headings + Storybook defaults) */
+.sbdocs h2[id],
+.sbdocs h3[id],
+.sbdocs h4[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* MDX / inline docs code — exclude react-live playground (styled via playground.module.css) */
+.sbdocs pre:not(.prismjs):not(.prism-code):not(:where(.ds-live-playground *)),
+.sbdocs-preview pre {
+  background: #f6f8fa !important;
+  color: #1f2328 !important;
+  border: 1px solid #d0d7de !important;
+  border-radius: 8px !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+/*
+ * Story “Show code” (Storybook 10+): Source block uses <pre class="prismjs">, not .docblock-source.
+ * Canvas always applies dark-theme Prism token colors; we use a light panel + high-contrast tokens.
+ * Exclude react-live playground — it uses prism-react-renderer inline colors on a contenteditable pre.
+ */
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) {
+  margin: 0 !important;
+  padding: 12px 16px !important;
+  background: #f6f8fa !important;
+  color: #1f2328 !important;
+  border: 1px solid #d0d7de !important;
+  border-radius: 0 0 8px 8px !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  overflow-x: auto !important;
+}
+
+/* Reset low-contrast dark-theme tokens, then apply GitHub-style light syntax */
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) span[class*='token'] {
+  color: #1f2328 !important;
+  background: transparent !important;
+  text-shadow: none !important;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.comment,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.prolog,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.doctype,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.cdata {
+  color: #57606a !important;
+  font-style: italic;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.keyword,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.keyword.module,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.keyword.control-flow,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.atrule {
+  color: #cf222e !important;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.string,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.char,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.inserted {
+  color: #0a3069 !important;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.tag {
+  color: #116329 !important;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.tag.class-name,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.class-name,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.function,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.function.maybe-class-name {
+  color: #8250df !important;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.tag.attr-name,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.attr-name,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.property {
+  color: #0550ae !important;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.tag.attr-value,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.attr-value {
+  color: #0a3069 !important;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.punctuation,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.tag.punctuation,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.imports.punctuation,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.tag.attr-value.punctuation,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.tag.attr-value.punctuation.attr-equals {
+  color: #1f2328 !important;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.operator,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.entity,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.url {
+  color: #1f2328 !important;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.number,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.boolean,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.constant,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.symbol,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.variable,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.regex,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.important {
+  color: #953800 !important;
+}
+
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.plain-text,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.imports,
+.sbdocs pre.prismjs:not(:where(.ds-live-playground *)) .token.imports.maybe-class-name {
+  color: #1f2328 !important;
+}
+
+/*
+ * Storybook source toolbar only — do NOT target `.sb-story button` (that overrides
+ * Select triggers, Modal close, etc. inside the preview canvas).
+ */
+.sbdocs button[aria-label='Show code'],
+.sbdocs button[aria-label='Hide code'],
+.sbdocs button[aria-label='Copy code'],
+.sbdocs button[title='Show code'],
+.sbdocs button[title='Hide code'],
+.sbdocs button[title='Copy code'] {
+  color: #0969da;
+}
+
+/*
+ * Live editor in Docs — match Canvas Composition playground.
+ * Do NOT set color on token spans: prism-react-renderer uses inline style="color:…"
+ * and !important/revert here flattens syntax highlighting to a single gray.
+ */
+/*
+ * Docs: opt out of prose typography (sb-unstyled on root) and use full content width.
+ * Editor chrome lives in playground.module.css only — avoid duplicating pre/span rules here.
+ */
+.sbdocs .ds-live-playground {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+.sbdocs .ds-live-playground .split {
+  width: 100%;
+}

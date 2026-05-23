@@ -1,9 +1,44 @@
 .card {
   background: var(--ds-color-surface);
-  border: 1px solid rgba(16, 24, 40, 0.06);
+  border: 1px solid var(--ds-color-border);
   border-radius: var(--ds-radius-lg);
+}
+
+.elevated {
   box-shadow: var(--ds-shadow-card);
 }
+
+.outlined {
+  box-shadow: none;
+}
+
+.flat {
+  box-shadow: none;
+  border-color: transparent;
+  background: transparent;
+}
+
+.header {
+  padding: var(--ds-space-4) var(--ds-space-5);
+  border-bottom: 1px solid var(--ds-color-border);
+  font-weight: 600;
+}
+
+.body {
+  padding: var(--ds-space-5);
+}
+
+.footer {
+  padding: var(--ds-space-4) var(--ds-space-5);
+  border-top: 1px solid var(--ds-color-border);
+  display: flex;
+  gap: var(--ds-space-2);
+  justify-content: flex-end;
+}
+
+.pad_sm { padding: var(--ds-space-3); }
+.pad_md { padding: var(--ds-space-5); }
+.pad_lg { padding: var(--ds-space-6); }
 
 .none {
   padding: 0;

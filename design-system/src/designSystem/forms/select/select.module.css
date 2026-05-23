@@ -1,0 +1,194 @@
+.root {
+  position: relative;
+  min-width: 220px;
+}
+
+.trigger {
+  appearance: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-2);
+  margin: 0;
+  padding: var(--ds-space-3) var(--ds-space-4);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface);
+  color: var(--ds-color-text);
+  font: inherit;
+  font-size: var(--ds-font-size-md);
+  line-height: var(--ds-line-height);
+  cursor: pointer;
+  text-align: left;
+  box-sizing: border-box;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ds-color-interactive) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.triggerOpen {
+  border-color: var(--ds-color-interactive);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ds-color-interactive) 25%, transparent);
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder {
+  color: var(--ds-color-muted);
+}
+
+.triggerWithChips {
+  align-items: center;
+  min-height: 44px;
+}
+
+.valueChips {
+  flex: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--ds-space-2);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-1);
+  flex-shrink: 0;
+  max-width: 100%;
+  padding: 2px var(--ds-space-2);
+  border-radius: var(--ds-radius-pill);
+  background: color-mix(in srgb, var(--ds-color-interactive) 12%, var(--ds-color-surface));
+  color: var(--ds-color-text);
+  font-size: var(--ds-font-size-sm);
+  line-height: var(--ds-line-height);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chipRemove {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--ds-color-muted);
+  padding: 0;
+  line-height: 1;
+  font-size: var(--ds-font-size-md);
+}
+
+.chipRemove:hover {
+  color: var(--ds-color-text);
+}
+
+.chipOverflow {
+  flex-shrink: 0;
+  padding: 2px var(--ds-space-2);
+  border-radius: var(--ds-radius-pill);
+  background: color-mix(in srgb, var(--ds-color-interactive) 8%, var(--ds-color-surface));
+  color: var(--ds-color-muted);
+  font-size: var(--ds-font-size-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chevron {
+  display: inline-flex;
+  color: var(--ds-color-muted);
+  flex-shrink: 0;
+}
+
+.popover {
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  box-shadow: var(--ds-shadow-overlay);
+  overflow: hidden;
+  z-index: var(--ds-z-dropdown);
+}
+
+.searchWrap {
+  padding: var(--ds-space-2);
+  border-bottom: 1px solid var(--ds-color-border);
+}
+
+.searchInput {
+  width: 100%;
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-sm);
+  padding: var(--ds-space-2) var(--ds-space-3);
+  font: inherit;
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-text);
+  background: var(--ds-color-surface);
+}
+
+.searchInput::placeholder {
+  color: var(--ds-color-muted);
+}
+
+.listbox {
+  list-style: none;
+  margin: 0;
+  padding: var(--ds-space-1);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-2);
+  padding: var(--ds-space-2) var(--ds-space-3);
+  border-radius: var(--ds-radius-sm);
+  font-size: var(--ds-font-size-md);
+  color: var(--ds-color-text);
+  cursor: pointer;
+}
+
+.optionHighlighted {
+  background: color-mix(in srgb, var(--ds-color-interactive) 10%, var(--ds-color-surface));
+}
+
+.optionSelected {
+  color: var(--ds-color-interactive);
+  font-weight: 600;
+}
+
+.optionDisabled {
+  color: var(--ds-color-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.optionLabel {
+  flex: 1;
+}
+
+.checkmark {
+  color: var(--ds-color-interactive);
+  font-weight: 700;
+}
+
+.empty {
+  padding: var(--ds-space-3);
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-muted);
+}

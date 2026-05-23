@@ -1,0 +1,81 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.track {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  border: 0;
+  padding: 0;
+  border-radius: var(--ds-radius-pill);
+  background: color-mix(in srgb, var(--ds-color-muted) 35%, var(--ds-color-surface));
+  cursor: inherit;
+  transition: background 120ms ease;
+}
+
+.sm .track {
+  width: 36px;
+  height: 20px;
+}
+
+.md .track {
+  width: 44px;
+  height: 24px;
+}
+
+.trackChecked {
+  background: var(--ds-color-interactive);
+}
+
+.track:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--ds-color-focus) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-color-on-interactive);
+  box-shadow: var(--ds-shadow-card);
+  transition: transform 120ms ease;
+}
+
+.sm .thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.md .thumb {
+  width: 20px;
+  height: 20px;
+}
+
+.sm .trackChecked .thumb {
+  transform: translateX(16px);
+}
+
+.md .trackChecked .thumb {
+  transform: translateX(20px);
+}
+
+.label {
+  font-size: var(--ds-font-size-md);
+  color: var(--ds-color-text);
+  line-height: var(--ds-line-height);
+}
+
+.sm .label {
+  font-size: var(--ds-font-size-sm);
+}

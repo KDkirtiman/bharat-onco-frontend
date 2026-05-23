@@ -1,0 +1,21 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--ds-space-1);
+  padding: var(--ds-space-3) var(--ds-space-4);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface);
+}
+
+.label {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-muted);
+}
+
+.time {
+  font-size: var(--ds-font-size-xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ds-color-text);
+}

@@ -1,0 +1,117 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { DocTable } from './DocTable';
+
+<Meta title="Docs/Design tokens" />
+
+# Design tokens
+
+All components reference semantic variables from `tokens/globals.css`. **Do not hardcode brand colors** in component CSS — override tokens or use `ThemeProvider` instead.
+
+## Typography
+
+<DocTable
+  columns={[
+    { key: 'token', header: 'Token' },
+    { key: 'purpose', header: 'Purpose' },
+  ]}
+  rows={[
+    { token: <code>--ds-font-family</code>, purpose: 'Base font stack for all text' },
+    {
+      token: (
+        <>
+          <code>--ds-font-size-xs</code> through <code>--ds-font-size-2xl</code>
+        </>
+      ),
+      purpose: 'Type scale from captions to display headings',
+    },
+    { token: <code>--ds-line-height</code>, purpose: 'Default body line height' },
+    { token: <code>--ds-line-height-tight</code>, purpose: 'Headings and compact UI' },
+  ]}
+/>
+
+## Spacing and radius
+
+<DocTable
+  columns={[
+    { key: 'token', header: 'Token' },
+    { key: 'purpose', header: 'Purpose' },
+  ]}
+  rows={[
+    {
+      token: (
+        <>
+          <code>--ds-space-1</code> through <code>--ds-space-8</code>
+        </>
+      ),
+      purpose: '4px–32px spacing scale (padding, gaps)',
+    },
+    { token: <code>--ds-radius-sm</code>, purpose: '8px — inputs, small chips' },
+    { token: <code>--ds-radius-md</code>, purpose: '12px — cards, fields' },
+    { token: <code>--ds-radius-lg</code>, purpose: '16px — large surfaces' },
+    { token: <code>--ds-radius-pill</code>, purpose: 'Fully rounded pills and buttons' },
+  ]}
+/>
+
+## Colors
+
+<DocTable
+  columns={[
+    { key: 'token', header: 'Token' },
+    { key: 'purpose', header: 'Purpose' },
+  ]}
+  rows={[
+    { token: <code>--ds-color-bg</code>, purpose: 'Application page background' },
+    { token: <code>--ds-color-surface</code>, purpose: 'Cards, inputs, elevated panels' },
+    { token: <code>--ds-color-text</code>, purpose: 'Primary foreground text' },
+    { token: <code>--ds-color-muted</code>, purpose: 'Secondary text, hints, labels' },
+    { token: <code>--ds-color-border</code>, purpose: 'Dividers and outlines' },
+    { token: <code>--ds-color-focus</code>, purpose: 'Keyboard focus ring color' },
+    { token: <code>--ds-color-success</code>, purpose: 'Positive / completed states' },
+    { token: <code>--ds-color-warning</code>, purpose: 'Caution / pending states' },
+    { token: <code>--ds-color-danger</code>, purpose: 'Errors and destructive actions' },
+    { token: <code>--ds-color-info</code>, purpose: 'Informational highlights' },
+    { token: <code>--ds-accent-1</code>, purpose: 'Primary brand accent' },
+    { token: <code>--ds-accent-2</code>, purpose: 'Secondary accent (gradients)' },
+  ]}
+/>
+
+## Themes
+
+Use the **Theme** toolbar in Storybook (**Default** / **Contrast**) or wrap your app:
+
+```tsx
+<ThemeProvider theme="contrast">…</ThemeProvider>
+```
+
+Contrast tokens live in `tokens/themes/contrast.css` and apply via `data-ds-theme="contrast"`.
+
+## Elevation
+
+<DocTable
+  columns={[
+    { key: 'token', header: 'Token' },
+    { key: 'purpose', header: 'Purpose' },
+  ]}
+  rows={[
+    { token: <code>--ds-shadow-card</code>, purpose: 'Cards and raised surfaces' },
+    { token: <code>--ds-shadow-button</code>, purpose: 'Primary call-to-action buttons' },
+    { token: <code>--ds-shadow-overlay</code>, purpose: 'Modals, popovers, menus' },
+    { token: <code>--ds-color-overlay</code>, purpose: 'Scrim behind modal layers' },
+  ]}
+/>
+
+## Z-index scale
+
+<DocTable
+  columns={[
+    { key: 'token', header: 'Token' },
+    { key: 'value', header: 'Layer' },
+  ]}
+  rows={[
+    { token: <code>--ds-z-dropdown</code>, value: 'Menus, selects' },
+    { token: <code>--ds-z-modal</code>, value: 'Modal dialogs' },
+    { token: <code>--ds-z-snackbar</code>, value: 'Toasts' },
+    { token: <code>--ds-z-tooltip</code>, value: 'Tooltips' },
+  ]}
+/>

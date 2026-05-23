@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+  color: var(--ds-color-muted);
+}
+
+.horizontal {
+  width: 100%;
+}
+
+.vertical {
+  flex-direction: column;
+  height: 100%;
+  width: auto;
+}
+
+.line {
+  flex: 1;
+  background: var(--ds-color-border);
+}
+
+.horizontal .line {
+  height: 1px;
+}
+
+.vertical .line {
+  width: 1px;
+}
+
+.label {
+  flex-shrink: 0;
+  font-size: var(--ds-font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}

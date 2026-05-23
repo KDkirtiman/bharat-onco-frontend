@@ -1,0 +1,29 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ds-space-2);
+}
+
+.svg {
+  display: block;
+}
+
+.empty {
+  fill: var(--ds-color-border);
+}
+
+.fill {
+  fill: var(--ds-color-interactive);
+}
+
+.outline {
+  stroke: var(--ds-color-border-strong);
+  stroke-width: 2;
+}
+
+.label {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-text);
+  font-weight: 600;
+}

@@ -1,0 +1,67 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-5);
+  margin: var(--ds-space-4) 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+}
+
+.heading {
+  margin: 0;
+  font-size: var(--ds-font-size-lg);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.intro {
+  margin: 0;
+  color: var(--ds-color-muted);
+  font-size: var(--ds-font-size-md);
+  line-height: var(--ds-line-height);
+}
+
+.list {
+  margin: 0;
+  padding-left: var(--ds-space-5);
+  color: var(--ds-color-text);
+  line-height: 1.55;
+}
+
+.list li + li {
+  margin-top: var(--ds-space-1);
+}
+
+.scenarios {
+  display: grid;
+  gap: var(--ds-space-3);
+}
+
+.scenario {
+  padding: var(--ds-space-3) var(--ds-space-4);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface);
+}
+
+.scenarioTitle {
+  margin: 0 0 var(--ds-space-1);
+  font-size: var(--ds-font-size-md);
+  font-weight: 700;
+}
+
+.scenarioDesc {
+  margin: 0;
+  color: var(--ds-color-muted);
+  font-size: var(--ds-font-size-md);
+}
+
+.storyLink {
+  margin: var(--ds-space-2) 0 0;
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-text);
+}

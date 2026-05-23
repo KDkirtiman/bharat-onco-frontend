@@ -1,0 +1,75 @@
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-text);
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ds-color-muted);
+  flex-shrink: 0;
+}
+
+.badge {
+  padding: var(--ds-space-1) var(--ds-space-3);
+  border-radius: var(--ds-radius-pill);
+  border: 1px solid var(--ds-color-border);
+  background: var(--ds-color-surface);
+}
+
+.dot .indicator {
+  width: 10px;
+  height: 10px;
+}
+
+.neutral .indicator {
+  background: var(--ds-color-muted);
+}
+
+.success .indicator {
+  background: var(--ds-color-success);
+}
+
+.success.badge {
+  background: var(--ds-color-success-bg);
+  border-color: color-mix(in srgb, var(--ds-color-success) 30%, transparent);
+  color: var(--ds-color-success);
+}
+
+.warning .indicator {
+  background: var(--ds-color-warning);
+}
+
+.warning.badge {
+  background: var(--ds-color-warning-bg);
+  border-color: color-mix(in srgb, var(--ds-color-warning) 30%, transparent);
+  color: var(--ds-color-warning);
+}
+
+.danger .indicator {
+  background: var(--ds-color-danger);
+}
+
+.danger.badge {
+  background: var(--ds-color-danger-bg);
+  border-color: color-mix(in srgb, var(--ds-color-danger) 30%, transparent);
+  color: var(--ds-color-danger);
+}
+
+.info .indicator {
+  background: var(--ds-color-info);
+}
+
+.info.badge {
+  background: var(--ds-color-info-bg);
+  border-color: color-mix(in srgb, var(--ds-color-info) 30%, transparent);
+  color: var(--ds-color-info);
+}
+
+.text {
+  line-height: 1.2;
+}

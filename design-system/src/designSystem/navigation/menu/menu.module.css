@@ -1,0 +1,37 @@
+.root {
+  display: inline-flex;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  width: 100%;
+  padding: var(--ds-space-2) var(--ds-space-3);
+  border: none;
+  background: transparent;
+  color: var(--ds-color-text);
+  font: inherit;
+  font-size: var(--ds-font-size-sm);
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--ds-radius-sm);
+}
+
+.item:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ds-color-interactive) 8%, var(--ds-color-surface));
+}
+
+.item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.destructive {
+  color: var(--ds-color-danger);
+}
+
+.icon {
+  display: inline-flex;
+  color: var(--ds-color-muted);
+}

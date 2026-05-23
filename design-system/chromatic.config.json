@@ -1,0 +1,7 @@
+{
+  "projectId": "bharat-oncology-design-system",
+  "buildScriptName": "build-storybook",
+  "storybookBaseDir": ".",
+  "onlyChanged": true,
+  "exitZeroOnChanges": true
+}

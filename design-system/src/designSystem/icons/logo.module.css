@@ -1,0 +1,23 @@
+.logo {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.sm {
+  height: 28px;
+}
+
+.md {
+  height: 36px;
+}
+
+.lg {
+  height: 44px;
+}
+
+.xl {
+  height: 56px;
+}

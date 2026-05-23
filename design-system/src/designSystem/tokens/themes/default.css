@@ -1,0 +1,10 @@
+[data-ds-theme='default'] {
+  --ds-color-bg: #fbf7ff;
+  --ds-color-surface: #ffffff;
+  --ds-color-text: #101828;
+  --ds-color-muted: rgba(16, 24, 40, 0.65);
+  --ds-color-border: rgba(16, 24, 40, 0.12);
+  --ds-color-focus: #7c3aed;
+  --ds-accent-1: #a855f7;
+  --ds-accent-2: #ec4899;
+}

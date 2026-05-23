@@ -4,9 +4,26 @@ import { Badge } from '../core/badge/Badge';
 
 import { ActivityListItem } from './ActivityListItem';
 import { MetricCard } from './MetricCard';
-
 const meta: Meta = {
   title: 'Widgets/Dashboard',
+  parameters: {
+    liveCode: `render(
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, maxWidth: 640 }}>
+    <MetricCard title="Check-ins" value="18" footer="+2 vs last week" />
+    <ActivityListItem title="Visit scheduled" meta="2h ago" />
+  </div>
+);`,
+    usageCode: `import { ActivityListItem, MetricCard } from '@/designSystem';
+
+export function Example() {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, maxWidth: 640 }}>
+        <MetricCard title="Check-ins" value="18" footer="+2 vs last week" />
+        <ActivityListItem title="Visit scheduled" meta="2h ago" />
+      </div>
+  );
+}`,
+  },
 };
 
 export default meta;

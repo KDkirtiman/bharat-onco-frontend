@@ -1,0 +1,67 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ds-space-2);
+  width: 100%;
+  padding: var(--ds-space-4);
+  border-radius: var(--ds-radius-md);
+  border: 2px solid var(--ds-color-border);
+  background: var(--ds-color-surface);
+  color: var(--ds-color-text);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.card:hover:not(:disabled) {
+  border-color: var(--ds-color-interactive);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--ds-color-focus);
+  outline-offset: 2px;
+}
+
+.default {
+  box-shadow: var(--ds-shadow-card);
+}
+
+.outline {
+  box-shadow: none;
+}
+
+.selected {
+  border-color: var(--ds-color-interactive);
+  background: color-mix(in srgb, var(--ds-color-interactive) 6%, var(--ds-color-surface));
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.icon {
+  color: var(--ds-color-interactive);
+  font-size: var(--ds-font-size-xl);
+}
+
+.title {
+  font-size: var(--ds-font-size-md);
+  font-weight: 600;
+}
+
+.description {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-muted);
+}
+
+.check {
+  position: absolute;
+  top: var(--ds-space-3);
+  right: var(--ds-space-3);
+  color: var(--ds-color-interactive);
+  font-weight: 700;
+}

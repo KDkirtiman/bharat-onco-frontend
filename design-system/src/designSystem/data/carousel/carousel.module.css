@@ -1,0 +1,63 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-3);
+  width: 100%;
+}
+
+.viewport {
+  position: relative;
+  min-height: 120px;
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface);
+  overflow: hidden;
+}
+
+.slide {
+  padding: var(--ds-space-6);
+  font-size: var(--ds-font-size-md);
+  color: var(--ds-color-text);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-3);
+}
+
+.navBtn {
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-color-surface);
+  color: var(--ds-color-text);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: var(--ds-font-size-lg);
+}
+
+.navBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.dots {
+  display: flex;
+  gap: var(--ds-space-2);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ds-color-border);
+  cursor: pointer;
+  padding: 0;
+}
+
+.dotActive {
+  background: var(--ds-color-interactive);
+}
