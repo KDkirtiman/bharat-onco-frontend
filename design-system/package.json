@@ -14,7 +14,8 @@
     "dev": "vite",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006 --exact-port",
-    "test": "vitest"
+    "test": "vitest",
+    "generate:types": "openapi-typescript openapi.yaml -o src/shared/generated/schema.ts"
   },
   "dependencies": {
     "react": "^19.2.6",
@@ -33,6 +34,7 @@
     "@vitest/browser-playwright": "^4.1.5",
     "@vitest/coverage-v8": "^4.1.5",
     "eslint": "^10.3.0",
+    "openapi-typescript": "^7.0.0",
     "eslint-plugin-storybook": "^10.3.6",
     "playwright": "^1.59.1",
     "storybook": "^10.3.6",
