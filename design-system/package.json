@@ -2,7 +2,7 @@
   "name": "@bharat-onco/design-system",
   "version": "1.0.0",
   "private": true,
-  "description": "Bharat Oncology design system — React components, tokens, and Storybook (extractable package).",
+  "description": "Bharat Oncology design system \u2014 React components, tokens, and Storybook (extractable package).",
   "type": "module",
   "license": "ISC",
   "engines": {
@@ -16,7 +16,13 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006 --exact-port",
     "test": "vitest",
-    "test:coverage": "vitest --run --coverage"
+    "test:coverage": "vitest --run --coverage",
+    "prepare": "husky",
+    "lint": "eslint src --ext .ts,.tsx --max-warnings 0",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write src",
+    "format:check": "prettier --check src",
+    "generate:types": "openapi-typescript ../openapi.yaml -o src/shared/generated/schema.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -44,7 +50,17 @@
     "storybook": "^10.3.6",
     "typescript": "^6.0.3",
     "vite": "^8.0.11",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.5",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.3.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
+    "openapi-typescript": "^7.0.0"
   },
   "eslintConfig": {
     "extends": [
@@ -64,5 +80,11 @@
     "react",
     "storybook",
     "vite"
-  ]
+  ],
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
 }
