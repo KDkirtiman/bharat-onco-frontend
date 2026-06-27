@@ -148,7 +148,13 @@ components:
     # ── USERS ─────────────────────────────
     UserRole:
       type: string
-      enum: [superadmin, admin, doctor, nurse, receptionist, patient]
+      enum: [super_admin, center_admin, oncologist, nurse, staff]
+      description: |
+        super_admin   — platform level, manages all centers
+        center_admin  — manages one center (users, billing, treatment plans, reports)
+        oncologist    — clinical lead (diagnosis, staging, treatment plans, reports)
+        nurse         — clinical support (vitals, treatment administration, appointments)
+        staff         — front desk (patient registration, appointments, billing)
 
     UserSummary:
       type: object
