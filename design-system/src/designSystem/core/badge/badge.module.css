@@ -1,0 +1,50 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ds-radius-pill);
+  border: 1px solid transparent;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sm {
+  padding: 2px 8px;
+  font-size: 11px;
+}
+
+.md {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.neutral {
+  background: rgba(16, 24, 40, 0.06);
+  color: rgba(16, 24, 40, 0.85);
+  border-color: rgba(16, 24, 40, 0.08);
+}
+
+.success {
+  background: rgba(16, 185, 129, 0.12);
+  color: rgba(6, 95, 70, 1);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.warning {
+  background: rgba(245, 158, 11, 0.14);
+  color: rgba(146, 64, 14, 1);
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+.danger {
+  background: rgba(239, 68, 68, 0.12);
+  color: rgba(153, 27, 27, 1);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.info {
+  background: rgba(99, 102, 241, 0.12);
+  color: rgba(49, 46, 129, 1);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+

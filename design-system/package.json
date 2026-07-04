@@ -1,0 +1,64 @@
+{
+  "name": "bharat-onco-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bharat Oncology frontend: React + Vite app shell and Storybook design system (components under src/designSystem).",
+  "type": "module",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "build-storybook": "storybook build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006 --exact-port",
+    "test": "vitest",
+    "generate:types": "openapi-typescript openapi.yaml -o src/shared/generated/schema.ts"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^5.1.2",
+    "@storybook/addon-a11y": "^10.3.6",
+    "@storybook/addon-docs": "^10.3.6",
+    "@storybook/addon-onboarding": "^10.3.6",
+    "@storybook/addon-vitest": "^10.3.6",
+    "@storybook/react-vite": "^10.3.6",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/browser-playwright": "^4.1.5",
+    "@vitest/coverage-v8": "^4.1.5",
+    "eslint": "^10.3.0",
+    "openapi-typescript": "^7.0.0",
+    "eslint-plugin-storybook": "^10.3.6",
+    "playwright": "^1.59.1",
+    "storybook": "^10.3.6",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.11",
+    "vitest": "^4.1.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDkirtiman/bharat-onco-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KDkirtiman/bharat-onco-frontend/issues"
+  },
+  "homepage": "https://github.com/KDkirtiman/bharat-onco-frontend#readme",
+  "keywords": [
+    "bharat-oncology",
+    "react",
+    "storybook",
+    "vite"
+  ]
+}
