@@ -1,6 +1,6 @@
 {
   "name": "@kdkirtiman/bharat-onco-frontend",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Reusable UI component library for Bharat Oncology EHR",
   "type": "module",
   "main": "./dist/bharat-onco-frontend.cjs",
