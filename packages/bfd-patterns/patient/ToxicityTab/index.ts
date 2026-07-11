@@ -1,0 +1,1 @@
+export { ToxicityTab } from './ToxicityTab';

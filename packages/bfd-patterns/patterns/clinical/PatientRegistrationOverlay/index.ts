@@ -1,0 +1,1 @@
+export { PatientRegistrationOverlay } from './PatientRegistrationOverlay';

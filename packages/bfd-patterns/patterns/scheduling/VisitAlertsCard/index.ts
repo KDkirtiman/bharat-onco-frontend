@@ -1,0 +1,1 @@
+export { VisitAlertsCard } from './VisitAlertsCard';
