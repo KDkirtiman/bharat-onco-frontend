@@ -1,0 +1,1 @@
+export { InsuranceClaimsSubTab } from './InsuranceClaimsSubTab';

@@ -15,14 +15,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Install deps from the public npm registry (registry.npmjs.org)
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@kdkirtiman'
+          node-version: '22'
+          cache: npm
 
       - run: npm ci
       - run: npm run build
+
+      # GitHub Packages requires scoped package names (@owner/name)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@kdkirtiman'
 
       - run: npm publish
         env:

@@ -1,53 +1,19 @@
 import { defineConfig } from 'vite';
-import path from 'path';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
-import dts from 'vite-plugin-dts';
-import svgr from 'vite-plugin-svgr';
 import { resolve } from 'path';
-
+import dts from 'vite-plugin-dts';
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    svgr(),
-    dts({
-      include: ['src'],
-      exclude: ['src/**/*.stories.tsx', 'src/stories/**', 'src/App.tsx', 'src/main.tsx'],
-      rollupTypes: true,
-      tsconfigPath: './tsconfig.build.json',
-    }),
-  ],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
+  plugins: [dts({ include: ['shim.ts', 'register-shim.ts'], rollupTypes: true })],
   build: {
     lib: {
       entry: {
-        'bharat-onco-frontend': resolve(__dirname, 'src/index.ts'),
-        'tailwind-preset': resolve(__dirname, 'src/tailwind-preset.ts'),
+        'bharat-onco-frontend': resolve(__dirname, 'shim.ts'),
+        register: resolve(__dirname, 'src/register-shim.ts'),
       },
-      formats: ['es', 'cjs'],
-      fileName: (format, entryName) =>
-        format === 'es' ? `${entryName}.js` : `${entryName}.cjs`,
+      formats: ['es','cjs'],
+      fileName: (format, name) => format === 'es' ? name + '.js' : name + '.cjs',
     },
     rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        'react/jsx-runtime',
-        'react/jsx-dev-runtime',
-      ],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
-      },
+      external: [/^bfd-/, 'react', 'react-dom', 'react/jsx-runtime'],
     },
-    sourcemap: true,
-    emptyOutDir: true,
   },
 });
