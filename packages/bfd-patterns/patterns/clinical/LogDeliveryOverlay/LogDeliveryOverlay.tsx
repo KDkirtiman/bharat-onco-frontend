@@ -15,6 +15,7 @@ import { FormField } from 'bfd-core';
 import { Select as UISelect } from 'bfd-core';
 import { TextField } from 'bfd-core';
 import { Textarea } from 'bfd-core';
+import { cn } from 'bfd-core';
 
 interface Props {
   patientId:  string;

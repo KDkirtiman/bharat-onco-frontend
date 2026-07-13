@@ -1,1 +1,2 @@
-export { Sidebar } from './Sidebar';
+export { Sidebar, defaultNavByRole } from './Sidebar';
+export type { SidebarNavItem } from './Sidebar';

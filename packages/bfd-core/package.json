@@ -1,6 +1,6 @@
 {
   "name": "bfd-core",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,13 +16,26 @@
   "scripts": {
     "build": "node ../../scripts/build-all.mjs"
   },
+  "files": [
+    "dist"
+  ],
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDkirtiman/bharat-onco-frontend.git",
+    "directory": "packages/bfd-core"
+  },
   "peerDependencies": {
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19"
   },
   "dependencies": {
-    "bfd-themes": "*",
-    "bfd-icons": "*",
+    "bfd-themes": "1.0.0",
+    "bfd-icons": "1.0.0",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-popover": "^1.1.6",

@@ -6,7 +6,7 @@ on:
       - 'v*'
 
 permissions:
-  contents: read
+  contents: write
   packages: write
 
 jobs:
@@ -20,9 +20,28 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+          registry-url: 'https://registry.npmjs.org'
 
       - run: npm ci
+
+      # The git tag is the single source of truth for the version. Every
+      # package publishes at this same version (lockstep monorepo release).
+      - run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version
+      - run: npm run version:sync
       - run: npm run build
+
+      # Each bfd-* package is unscoped and public, so it publishes standalone
+      # to registry.npmjs.org (not GitHub Packages, which requires
+      # @owner/name scoping) — someone who only wants bfd-icons can
+      # `npm install bfd-icons` without pulling in the rest of the monorepo.
+      - name: Publish workspace packages to npm
+        run: |
+          for pkg in packages/bfd-*; do
+            echo "Publishing $pkg"
+            npm publish --workspace "$pkg"
+          done
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # GitHub Packages requires scoped package names (@owner/name)
       - uses: actions/setup-node@v4
@@ -34,3 +53,11 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Delivery record: one GitHub Release per tag, with auto-generated
+      # notes from merged PRs/commits since the previous tag.
+      - uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

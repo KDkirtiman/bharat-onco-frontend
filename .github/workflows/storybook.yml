@@ -5,6 +5,8 @@ on:
     branches:
       - master
       - release/26.0.beta
+    tags:
+      - 'v*'
 
 permissions:
   contents: read

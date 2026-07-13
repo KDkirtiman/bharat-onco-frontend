@@ -1,38 +1,41 @@
 # Bharat Oncology — Frontend
 
-This repository holds the **Bharat Oncology** web frontend workbench:
-
-1. **`design-system/`** — OpenAPI-aligned design system (tokens, primitives, layouts, composed screens) with its own Vite + Storybook package.
-2. **Repository root** — Reusable React component library extracted from the interactive mock (`bharat-onco-frontend`), with Storybook, mock datapoints, and mobile-responsive layout patterns.
+Reusable React UI component library for the **Bharat Oncology** EHR, published as `@kdkirtiman/bharat-onco-frontend`. Built as an npm workspaces monorepo with a single unified Storybook.
 
 ---
 
-## Quick start — design system
-
-```bash
-cd design-system
-npm install
-npm run dev
-```
-
-- **App (Vite)** — dev server URL is printed in the terminal (usually `http://localhost:5173`).
-- **Storybook** — `npm run storybook`, then open `http://localhost:6006`.
-
-See **`design-system/README.md`** for layout, Storybook wiring, and story groupings.
-
----
-
-## Quick start — component library (repo root)
+## Quick start
 
 ```bash
 npm install
 npm run dev          # Storybook on http://localhost:6006
-npm run build        # Library + CSS
+npm run build         # Builds all packages + the library bundle
 ```
 
-**Stack:** React 18/19 · TypeScript · Tailwind CSS v4 · lucide-react · Radix UI primitives
+**Stack:** React 18/19 · TypeScript · Tailwind CSS v4 · lucide-react · Radix UI primitives · Vite · Storybook 8
 
-### Install as npm package
+---
+
+## Monorepo layout
+
+```
+packages/
+├── bfd-themes/      # CSS variables, design tokens, tailwind preset
+├── bfd-icons/       # icon exports
+├── bfd-core/        # primitives, controls, layout, data display
+├── bfd-tables/      # table components
+└── bfd-patterns/    # overlays, invoice templates, patient tabs
+.storybook/           # unified Storybook config (root-level)
+scripts/               # build & version-sync tooling
+index.ts               # re-exports bfd-* packages
+shim.ts                # compat entry for @kdkirtiman/bharat-onco-frontend
+```
+
+Each component lives in its own folder with styles kept in a sibling `<Name>.styles.ts` file. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full component/PR workflow.
+
+---
+
+## Install as npm package
 
 Configure GitHub Packages in your consuming repo's `.npmrc`:
 
@@ -58,7 +61,7 @@ import 'bharat-onco-frontend/styles.css';
 import { AppLayout, Button, KPICard, mockPatients, mockUsers } from 'bharat-onco-frontend';
 ```
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for release workflow.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the release workflow.
 
 ---
 
@@ -66,17 +69,17 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for release workflow.
 
 | Area | Location |
 |------|----------|
-| Design tokens (CSS variables) | `design-system/src/designSystem/tokens/` |
-| Core UI (Button, Card, fields, etc.) | `design-system/src/designSystem/core/` |
-| OpenAPI spec | `design-system/openapi.yaml` |
-| Shared controls, layout, patient tabs | `src/components/` |
-| Billing / clinical / scheduling overlays | `src/patterns/` |
-| Mock datapoints | `src/datapoints/` |
-| Root Storybook config | `.storybook/` |
-| Design-system Storybook | `design-system/.storybook/` |
+| Design tokens (CSS variables) | `packages/bfd-themes/styles/theme.css` |
+| TypeScript token/class maps | `packages/bfd-themes/tokens/` |
+| Tailwind consumer preset | `packages/bfd-themes/styles/tailwind.css` |
+| Icons | `packages/bfd-icons/` |
+| Core UI (Button, Select, FormField, KPICard, layout, etc.) | `packages/bfd-core/components/` |
+| Tables | `packages/bfd-tables/` |
+| Billing / clinical / scheduling overlays, invoice templates | `packages/bfd-patterns/` |
+| Unified Storybook config | `.storybook/` |
 
 ---
 
 ## License
 
-**ISC** — see `design-system/package.json`. Root component library is private — Bharat Oncology internal use.
+Private — Bharat Oncology internal use.

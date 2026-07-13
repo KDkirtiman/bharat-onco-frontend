@@ -7,6 +7,7 @@ import type { Patient } from 'bfd-core';
 import type { Chair } from 'bfd-core';
 import { Button } from 'bfd-core';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'bfd-core';
+import { cn } from 'bfd-core';
 
 interface Props {
   appointment:    Appointment;

@@ -50,6 +50,10 @@ execSync("npx @tailwindcss/cli -i ./styles/index.css -o ./dist/styles.css --mini
 });
 
 await buildPkg("bfd-icons");
+fs.writeFileSync(
+  path.join(PKG_ROOT, "bfd-icons/dist/index.d.ts"),
+  "export * from 'lucide-react';\n",
+);
 await buildPkg("bfd-core");
 await buildPkg("bfd-tables");
 await buildPkg("bfd-patterns");

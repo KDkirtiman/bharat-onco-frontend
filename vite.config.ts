@@ -7,7 +7,7 @@ export default defineConfig({
     lib: {
       entry: {
         'bharat-onco-frontend': resolve(__dirname, 'shim.ts'),
-        register: resolve(__dirname, 'src/register-shim.ts'),
+        register: resolve(__dirname, 'register-shim.ts'),
       },
       formats: ['es','cjs'],
       fileName: (format, name) => format === 'es' ? name + '.js' : name + '.cjs',

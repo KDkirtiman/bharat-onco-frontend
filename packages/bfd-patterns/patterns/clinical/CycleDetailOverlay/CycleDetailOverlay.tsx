@@ -7,6 +7,7 @@ import { DELIVERY_STATUS_LABELS, DELIVERY_STATUS_COLORS } from 'bfd-core';
 import type { Appointment } from 'bfd-core';
 import type { ClinicalVisit, Vitals } from 'bfd-core';
 import { mockChairs } from 'bfd-core';
+import { cn } from 'bfd-core';
 
 interface Props {
   delivery:      TreatmentDelivery;

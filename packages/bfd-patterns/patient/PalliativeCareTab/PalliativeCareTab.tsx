@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Plus, X, Save } from 'bfd-icons';
 
 import type { PalliativeCareRecord, SymptomSeverity } from 'bfd-core';
+import { cn } from 'bfd-core';
 
 interface Props {
   patientId:       string;

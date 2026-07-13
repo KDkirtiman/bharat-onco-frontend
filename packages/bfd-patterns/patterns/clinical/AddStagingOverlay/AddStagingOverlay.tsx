@@ -15,6 +15,7 @@ import { Select } from 'bfd-core';
 import { TextField } from 'bfd-core';
 import { Textarea } from 'bfd-core';
 import { Callout } from 'bfd-core';
+import { cn } from 'bfd-core';
 
 const ALL_SITES = Object.keys(STAGING_SITE_LABELS) as CancerSite[];
 const ALL_CLASS = Object.keys(CLASSIFICATION_LABELS) as ClassificationType[];

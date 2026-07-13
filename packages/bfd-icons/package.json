@@ -1,6 +1,6 @@
 {
   "name": "bfd-icons",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -12,6 +12,19 @@
   },
   "scripts": {
     "build": "node ../../scripts/build-all.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDkirtiman/bharat-onco-frontend.git",
+    "directory": "packages/bfd-icons"
   },
   "peerDependencies": {
     "react": "^18 || ^19"

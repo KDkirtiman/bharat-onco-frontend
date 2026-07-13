@@ -6,6 +6,145 @@ import {
 } from 'bfd-core';
 import type { Invoice } from 'bfd-core';
 import type { Patient } from 'bfd-core';
+import { PRINT_NEUTRAL_HEX as gray, PRINT_BRAND_HEX as brand } from 'bfd-themes';
+
+/** Shared CSS for print/PDF documents (invoice + registration receipt). */
+function documentStyles(): string {
+  return `
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: ${gray.slateSoft};
+    color: ${gray.slateBody};
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    max-width: 760px;
+    margin: 24px auto;
+    background: ${gray.white};
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  }
+
+  /* ── Header ── */
+  .hdr {
+    background: linear-gradient(135deg, ${brand.violetDark} 0%, ${brand.violetMid} 60%, ${brand.violetLight} 100%);
+    color: ${gray.white};
+    padding: 32px 40px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .org-name  { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+  .org-sub   { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 3px; letter-spacing: 0.3px; }
+  .inv-right { text-align: right; }
+  .inv-title { font-size: 26px; font-weight: 200; letter-spacing: 6px; text-transform: uppercase; }
+  .inv-num   { font-size: 12px; font-family: 'Courier New', monospace; color: rgba(255,255,255,0.8); margin-top: 6px; }
+
+  /* ── Body ── */
+  .body { padding: 32px 40px; }
+
+  /* ── Info grid ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 32px;
+    margin-bottom: 28px;
+  }
+  .info-block h4 {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: ${brand.violetMid};
+    font-weight: 700;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid ${brand.violetSoft};
+  }
+  .info-block .primary { font-size: 14px; font-weight: 600; color: ${gray.gray900}; margin-bottom: 2px; }
+  .info-block p { font-size: 12px; color: ${gray.gray600}; line-height: 1.7; }
+  .info-block strong { color: ${gray.gray700}; }
+  .mono { font-family: 'Courier New', monospace; }
+
+  /* ── Divider ── */
+  hr { border: none; border-top: 1px solid ${gray.gray200}; margin: 4px 0 24px; }
+
+  /* ── Table ── */
+  .table-wrap { border: 1px solid ${gray.gray200}; border-radius: 8px; overflow: hidden; margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: ${brand.violetSoft}; }
+  thead th {
+    padding: 10px 16px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: ${brand.violetDark};
+    font-weight: 700;
+    text-align: left;
+  }
+  thead th.amt { text-align: right; }
+  tbody tr { border-top: 1px solid ${gray.gray100}; }
+  tbody td { padding: 12px 16px; font-size: 13px; color: ${gray.gray700}; }
+  tbody td.amt { text-align: right; font-weight: 600; color: ${gray.gray900}; }
+  .discount-row td { color: ${brand.successEmphasisMid} !important; }
+
+  /* ── Total bar ── */
+  .total-bar {
+    background: linear-gradient(90deg, ${brand.violetDark}, ${brand.violetMid});
+    color: ${gray.white};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 0 0 8px 8px;
+    margin-top: 0;
+  }
+
+  /* ── Payment section ── */
+  .payment { margin-top: 24px; display: flex; gap: 32px; }
+  .payment-block h4, .payment h4 {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: ${brand.violetMid};
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge-type    { background: ${brand.violetSoft}; color: ${brand.violetDark}; }
+  .badge-paid    { background: ${brand.successSoft}; color: ${brand.successEmphasis}; }
+  .badge-pending { background: ${brand.warningSoft}; color: ${brand.warningEmphasis}; }
+  .badge-preauth { background: ${brand.infoSoft}; color: ${brand.infoEmphasis}; }
+  .badge-waived  { background: ${brand.neutralSoft}; color: ${brand.neutralEmphasis}; }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 36px;
+    padding: 20px 40px;
+    background: ${gray.gray50};
+    border-top: 1px solid ${gray.gray200};
+    text-align: center;
+  }
+  .footer .tagline { font-size: 13px; font-weight: 600; color: ${brand.violetMid}; margin-bottom: 6px; }
+  .footer p { font-size: 11px; color: ${gray.gray400}; line-height: 1.7; }
+
+  /* ── Print ── */
+  @media print {
+    body { background: ${gray.white}; }
+    .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; }
+  }
+  `;
+}
 
 export interface InvoiceParams {
   invoice:     Invoice;
@@ -55,139 +194,7 @@ export function generateInvoiceHTML({ invoice, appointment, patient, doctor }: I
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Invoice ${invoice.invoiceNumber}</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: #f1f5f9;
-    color: #1e293b;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  .page {
-    max-width: 760px;
-    margin: 24px auto;
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-  }
-
-  /* ── Header ── */
-  .hdr {
-    background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 60%, #a855f7 100%);
-    color: #fff;
-    padding: 32px 40px 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .org-name  { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
-  .org-sub   { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 3px; letter-spacing: 0.3px; }
-  .inv-right { text-align: right; }
-  .inv-title { font-size: 26px; font-weight: 200; letter-spacing: 6px; text-transform: uppercase; }
-  .inv-num   { font-size: 12px; font-family: 'Courier New', monospace; color: rgba(255,255,255,0.8); margin-top: 6px; }
-
-  /* ── Body ── */
-  .body { padding: 32px 40px; }
-
-  /* ── Info grid ── */
-  .info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px 32px;
-    margin-bottom: 28px;
-  }
-  .info-block h4 {
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 1.8px;
-    color: #7c3aed;
-    font-weight: 700;
-    margin-bottom: 8px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid #ede9fe;
-  }
-  .info-block .primary { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 2px; }
-  .info-block p { font-size: 12px; color: #4b5563; line-height: 1.7; }
-  .info-block strong { color: #374151; }
-
-  /* ── Divider ── */
-  hr { border: none; border-top: 1px solid #e5e7eb; margin: 4px 0 24px; }
-
-  /* ── Table ── */
-  .table-wrap { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; margin-bottom: 0; }
-  table { width: 100%; border-collapse: collapse; }
-  thead tr { background: #f5f3ff; }
-  thead th {
-    padding: 10px 16px;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: #6d28d9;
-    font-weight: 700;
-    text-align: left;
-  }
-  thead th.amt { text-align: right; }
-  tbody tr { border-top: 1px solid #f3f4f6; }
-  tbody td { padding: 12px 16px; font-size: 13px; color: #374151; }
-  tbody td.amt { text-align: right; font-weight: 600; color: #111827; }
-  .discount-row td { color: #16a34a !important; }
-
-  /* ── Total bar ── */
-  .total-bar {
-    background: linear-gradient(90deg, #6d28d9, #7c3aed);
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 16px;
-    font-size: 15px;
-    font-weight: 700;
-    border-radius: 0 0 8px 8px;
-    margin-top: 0;
-  }
-
-  /* ── Payment section ── */
-  .payment { margin-top: 24px; display: flex; gap: 32px; }
-  .payment-block h4 {
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 1.8px;
-    color: #7c3aed;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .badge-type    { background: #ede9fe; color: #6d28d9; }
-  .badge-paid    { background: #dcfce7; color: #15803d; }
-  .badge-pending { background: #fef9c3; color: #a16207; }
-  .badge-preauth { background: #dbeafe; color: #1d4ed8; }
-  .badge-waived  { background: #f3f4f6; color: #6b7280; }
-
-  /* ── Footer ── */
-  .footer {
-    margin-top: 36px;
-    padding: 20px 40px;
-    background: #fafafa;
-    border-top: 1px solid #e5e7eb;
-    text-align: center;
-  }
-  .footer .tagline { font-size: 13px; font-weight: 600; color: #7c3aed; margin-bottom: 6px; }
-  .footer p { font-size: 11px; color: #9ca3af; line-height: 1.7; }
-
-  /* ── Print ── */
-  @media print {
-    body { background: #fff; }
-    .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; }
-  }
-</style>
+<style>${documentStyles()}</style>
 </head>
 <body>
 <div class="page">
@@ -274,7 +281,7 @@ export function generateInvoiceHTML({ invoice, appointment, patient, doctor }: I
     <p class="tagline">Thank you for choosing Bharat Oncology</p>
     <p>Bharat Oncology Advanced Cancer Care Centers · ${appointment.center}</p>
     <p>For billing queries: billing@bharatoncology.in &nbsp;|&nbsp; Helpline: 1800-XXX-XXXX</p>
-    <p style="margin-top:8px;font-size:10px;color:#d1d5db;">
+    <p style="margin-top:8px;font-size:10px;color:${gray.gray300};">
       This is a computer-generated invoice and does not require a physical signature.
     </p>
   </div>
@@ -303,116 +310,7 @@ export function generateRegistrationReceiptHTML(
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Registration Receipt ${receiptNumber}</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: #f1f5f9;
-    color: #1e293b;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  .page {
-    max-width: 760px;
-    margin: 24px auto;
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-  }
-  .hdr {
-    background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 60%, #a855f7 100%);
-    color: #fff;
-    padding: 32px 40px 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .org-name { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
-  .org-sub  { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 3px; letter-spacing: 0.3px; }
-  .inv-right { text-align: right; }
-  .inv-title { font-size: 22px; font-weight: 200; letter-spacing: 4px; text-transform: uppercase; }
-  .inv-num   { font-size: 12px; font-family: 'Courier New', monospace; color: rgba(255,255,255,0.8); margin-top: 6px; }
-  .body { padding: 32px 40px; }
-  .info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px 32px;
-    margin-bottom: 28px;
-  }
-  .info-block h4 {
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 1.8px;
-    color: #7c3aed;
-    font-weight: 700;
-    margin-bottom: 8px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid #ede9fe;
-  }
-  .info-block .primary { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 2px; }
-  .info-block p { font-size: 12px; color: #4b5563; line-height: 1.7; }
-  .info-block strong { color: #374151; }
-  .mono { font-family: 'Courier New', monospace; }
-  hr { border: none; border-top: 1px solid #e5e7eb; margin: 4px 0 24px; }
-  .table-wrap { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; margin-bottom: 0; }
-  table { width: 100%; border-collapse: collapse; }
-  thead tr { background: #f5f3ff; }
-  thead th {
-    padding: 10px 16px;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: #6d28d9;
-    font-weight: 700;
-    text-align: left;
-  }
-  thead th.amt { text-align: right; }
-  tbody tr { border-top: 1px solid #f3f4f6; }
-  tbody td { padding: 12px 16px; font-size: 13px; color: #374151; }
-  tbody td.amt { text-align: right; font-weight: 600; color: #111827; }
-  .total-bar {
-    background: linear-gradient(90deg, #6d28d9, #7c3aed);
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 16px;
-    font-size: 15px;
-    font-weight: 700;
-    border-radius: 0 0 8px 8px;
-  }
-  .payment { margin-top: 24px; }
-  .payment h4 {
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 1.8px;
-    color: #7c3aed;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .badge-paid { background: #dcfce7; color: #15803d; }
-  .footer {
-    margin-top: 36px;
-    padding: 20px 40px;
-    background: #fafafa;
-    border-top: 1px solid #e5e7eb;
-    text-align: center;
-  }
-  .footer .tagline { font-size: 13px; font-weight: 600; color: #7c3aed; margin-bottom: 6px; }
-  .footer p { font-size: 11px; color: #9ca3af; line-height: 1.7; }
-  @media print {
-    body { background: #fff; }
-    .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; }
-  }
-</style>
+<style>${documentStyles()}</style>
 </head>
 <body>
 <div class="page">
@@ -473,7 +371,7 @@ export function generateRegistrationReceiptHTML(
     <p class="tagline">Welcome to Bharat Oncology</p>
     <p>Bharat Oncology Advanced Cancer Care Centers · ${center}</p>
     <p>For queries: info@bharatoncology.in &nbsp;|&nbsp; Helpline: 1800-XXX-XXXX</p>
-    <p style="margin-top:8px;font-size:10px;color:#d1d5db;">
+    <p style="margin-top:8px;font-size:10px;color:${gray.gray300};">
       This is a computer-generated receipt and does not require a physical signature.
     </p>
   </div>
