@@ -26,7 +26,10 @@ jobs:
 
       # The git tag is the single source of truth for the version. Every
       # package publishes at this same version (lockstep monorepo release).
-      - run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version
+      # `npm pkg set` (unlike `npm version`) doesn't error when the version
+      # is already correct, so this is safe whether or not the tag's
+      # version matches what's already committed in package.json.
+      - run: npm pkg set version="${GITHUB_REF_NAME#v}"
       - run: npm run version:sync
       - run: npm run build
 
