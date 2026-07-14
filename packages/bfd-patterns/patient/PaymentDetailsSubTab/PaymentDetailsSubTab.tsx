@@ -5,6 +5,7 @@ import { CreditCard, Plus, X } from 'bfd-icons';
 import type { PaymentRecord, PaymentMode } from 'bfd-core';
 import { PAYMENT_MODE_LABELS } from 'bfd-core';
 import type { Invoice } from 'bfd-core';
+import { cn } from 'bfd-core';
 
 interface Props {
   patientId:      string;

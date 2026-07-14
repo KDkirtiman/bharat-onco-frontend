@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { SearchCombobox } from './SearchCombobox';
-import { Avatar } from '../data-display/Avatar';
+import { Avatar } from '../../data-display/Avatar';
 
 const meta: Meta<typeof SearchCombobox> = {
   title: 'Controls/SearchCombobox',

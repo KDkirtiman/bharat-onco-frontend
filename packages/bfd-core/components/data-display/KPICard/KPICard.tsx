@@ -86,6 +86,7 @@ function SparklineChart({ data }: { data: number[] }) {
     .join(' ');
 
   return (
+    // eslint-disable-next-line no-restricted-syntax -- chart primitive drawn from data, not a duplicated icon
     <svg className={styles.style10} preserveAspectRatio="none" viewBox="0 0 100 100">
       <polyline
         points={points}

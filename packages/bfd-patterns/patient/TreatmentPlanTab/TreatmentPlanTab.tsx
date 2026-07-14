@@ -5,6 +5,7 @@ import { Plus, FlaskConical, Radiation, Scissors, ClipboardList, Pencil, Chevron
 import type { TreatmentPlan, PlanModality } from 'bfd-core';
 import { TREATMENT_STATUS_LABELS, TREATMENT_STATUS_COLORS } from 'bfd-core';
 import { AddTreatmentPlanOverlay } from '../../patterns/clinical/AddTreatmentPlanOverlay';
+import { cn } from 'bfd-core';
 
 interface Props {
   patientId:       string;

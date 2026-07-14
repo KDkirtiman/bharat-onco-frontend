@@ -9,6 +9,7 @@ import {
 } from 'bfd-core';
 import type { TreatmentPlan } from 'bfd-core';
 import { AddStagingOverlay } from '../../patterns/clinical/AddStagingOverlay';
+import { cn } from 'bfd-core';
 
 interface Props {
   patientId:            string;

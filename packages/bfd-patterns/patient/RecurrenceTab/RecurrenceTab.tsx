@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { AlertTriangle, ClipboardList, Save } from 'bfd-icons';
 
 import type { RecurrenceRecord, RecurrenceType } from 'bfd-core';
+import { cn } from 'bfd-core';
 
 interface Props {
   patientId:       string;

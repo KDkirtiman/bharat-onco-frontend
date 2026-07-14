@@ -10,6 +10,7 @@ import type { Appointment } from 'bfd-core';
 import type { ClinicalVisit, Vitals } from 'bfd-core';
 import { LogDeliveryOverlay } from '../../patterns/clinical/LogDeliveryOverlay';
 import { CycleDetailOverlay } from '../../patterns/clinical/CycleDetailOverlay';
+import { cn } from 'bfd-core';
 
 interface Props {
   patientId:        string;

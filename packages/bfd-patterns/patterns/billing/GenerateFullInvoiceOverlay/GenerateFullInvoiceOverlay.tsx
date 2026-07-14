@@ -16,6 +16,7 @@ import type {
   InvoiceStatus, InvoicePmtStatus, PackageStatus, PreAuthStatus,
   RefundStatus, ClaimStatus, PaymentMode, CostCategory, CostEstimate,
 } from 'bfd-core';
+import { cn } from 'bfd-core';
 import {
   generateInvoiceNumber,
   CARE_SETTING_LABELS, DEPARTMENT_LABELS,

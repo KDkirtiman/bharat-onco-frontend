@@ -8,6 +8,7 @@ import { CostEstimationSubTab }  from '../CostEstimationSubTab';
 import { InsuranceClaimsSubTab } from '../InsuranceClaimsSubTab';
 import { PastInvoicesSubTab }    from '../PastInvoicesSubTab';
 import { PaymentDetailsSubTab }  from '../PaymentDetailsSubTab';
+import { cn } from 'bfd-core';
 
 interface Props {
   patient:          Patient;

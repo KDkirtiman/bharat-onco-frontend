@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Save } from 'bfd-icons';
 
 import type { SurvivorshipRecord, DiseaseStatus, ToxicityGradeSimple } from 'bfd-core';
+import { cn } from 'bfd-core';
 
 interface Props {
   patientId:       string;

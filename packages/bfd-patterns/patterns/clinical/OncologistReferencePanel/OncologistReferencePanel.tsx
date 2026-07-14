@@ -12,6 +12,7 @@ import {
   CTCAE_CATEGORY_LABELS, CTCAE_GRADE_DESCRIPTIONS,
 } from 'bfd-core';
 import type { CancerStaging } from 'bfd-core';
+import { cn } from 'bfd-core';
 
 type PanelTab = 'visits' | 'plans' | 'cycles' | 'documents' | 'toxicity';
 

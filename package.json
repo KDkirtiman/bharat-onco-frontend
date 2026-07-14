@@ -1,6 +1,6 @@
 {
   "name": "@kdkirtiman/bharat-onco-frontend",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Reusable UI component library for Bharat Oncology EHR",
   "type": "module",
   "main": "./dist/bharat-onco-frontend.cjs",
@@ -27,10 +27,11 @@
     "*.css"
   ],
   "scripts": {
-    "dev": "npm run storybook --workspace=bfd-storybook",
+    "dev": "npm run storybook",
     "build": "node scripts/build-all.mjs",
-    "storybook": "npm run storybook --workspace=bfd-storybook",
-    "build-storybook": "npm run build-storybook --workspace=bfd-storybook",
+    "version:sync": "node scripts/sync-versions.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "lint": "eslint ."
   },
   "publishConfig": {
@@ -60,17 +61,17 @@
     "@radix-ui/react-separator": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "bfd-core": "*",
+    "bfd-icons": "*",
+    "bfd-patterns": "*",
+    "bfd-tables": "*",
+    "bfd-themes": "*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "lucide-react": "^0.487.0",
     "react-day-picker": "^8.10.1",
-    "tailwind-merge": "^3.2.0",
-    "bfd-core": "*",
-    "bfd-icons": "*",
-    "bfd-patterns": "*",
-    "bfd-tables": "*",
-    "bfd-themes": "*"
+    "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
@@ -104,7 +105,6 @@
   },
   "private": true,
   "workspaces": [
-    "packages/*",
-    "apps/*"
+    "packages/*"
   ]
 }

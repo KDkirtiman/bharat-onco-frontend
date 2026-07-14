@@ -1,9 +1,9 @@
-import { mockUsers } from '../datapoints/auth';
-import { mockPatients } from '../datapoints/patients';
-import { mockAppointments, mockDoctors, mockVisitAlerts } from '../datapoints/scheduling';
-import { mockCostEstimates, mockInvoices } from '../datapoints/billing';
-import { mockChairs } from '../datapoints/chairs';
-import { mockClinicalVisits, mockVitals } from '../datapoints/clinical';
+import { mockUsers } from '../packages/bfd-core/datapoints/auth';
+import { mockPatients } from '../packages/bfd-core/datapoints/patients';
+import { mockAppointments, mockDoctors, mockVisitAlerts } from '../packages/bfd-core/datapoints/scheduling';
+import { mockCostEstimates, mockInvoices } from '../packages/bfd-core/datapoints/billing';
+import { mockChairs } from '../packages/bfd-core/datapoints/chairs';
+import { mockClinicalVisits, mockVitals } from '../packages/bfd-core/datapoints/clinical';
 
 export const fixtureUser = mockUsers.staff1;
 export const fixturePatient = mockPatients[0]!;
