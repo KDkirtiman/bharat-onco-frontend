@@ -1,0 +1,1 @@
+export { SurvivorshipTab } from './SurvivorshipTab';

@@ -1,0 +1,8 @@
+@import 'tailwindcss' source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+@source '../../bfd-core/**/*.{ts,tsx}';
+@source '../../bfd-patterns/**/*.{ts,tsx}';
+@source '../../bfd-tables/**/*.{ts,tsx}';
+@source '../../bfd-icons/**/*.{ts,tsx}';
+
+@import 'tw-animate-css';
