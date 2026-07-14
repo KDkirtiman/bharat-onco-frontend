@@ -1,0 +1,1 @@
+export { ViewDetailsOverlay } from './ViewDetailsOverlay';

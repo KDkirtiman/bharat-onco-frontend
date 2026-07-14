@@ -1,0 +1,1 @@
+export { PaymentDetailsSubTab } from './PaymentDetailsSubTab';

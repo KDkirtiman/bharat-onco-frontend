@@ -1,0 +1,39 @@
+{
+  "name": "bfd-patterns",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "node ../../scripts/build-all.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDkirtiman/bharat-onco-frontend.git",
+    "directory": "packages/bfd-patterns"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  },
+  "dependencies": {
+    "bfd-core": "1.0.0",
+    "bfd-icons": "1.0.0",
+    "bfd-themes": "1.0.0",
+    "bfd-tables": "1.0.0"
+  }
+}

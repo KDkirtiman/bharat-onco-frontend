@@ -1,0 +1,1 @@
+export { ChairAssignmentOverlay } from './ChairAssignmentOverlay';

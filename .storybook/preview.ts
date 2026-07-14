@@ -1,15 +1,15 @@
 import type { Preview } from '@storybook/react';
-import '../src/styles/index.css';
+import 'bfd-themes/register';
 
 const preview: Preview = {
   parameters: {
+    layout: 'padded',
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
     },
-    layout: 'padded',
   },
 };
 

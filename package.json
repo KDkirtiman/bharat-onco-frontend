@@ -1,6 +1,6 @@
 {
   "name": "@kdkirtiman/bharat-onco-frontend",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Reusable UI component library for Bharat Oncology EHR",
   "type": "module",
   "main": "./dist/bharat-onco-frontend.cjs",
@@ -8,15 +8,16 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/bharat-onco-frontend.d.ts",
       "import": "./dist/bharat-onco-frontend.js",
       "require": "./dist/bharat-onco-frontend.cjs"
     },
-    "./styles.css": "./dist/styles.css",
+    "./register": {
+      "import": "./dist/register.js"
+    },
+    "./styles.css": "./packages/bfd-themes/dist/styles.css",
     "./tailwind-preset": {
-      "types": "./dist/tailwind-preset.d.ts",
-      "import": "./dist/tailwind-preset.js",
-      "require": "./dist/tailwind-preset.cjs"
+      "import": "./packages/bfd-themes/dist/tailwind-preset.js"
     }
   },
   "files": [
@@ -26,12 +27,12 @@
     "*.css"
   ],
   "scripts": {
-    "dev": "storybook dev -p 6006",
-    "build": "vite build && npm run build:css && tsc -p tsconfig.build.json",
-    "build:css": "npx @tailwindcss/cli -i ./src/styles/index.css -o ./dist/styles.css --minify",
+    "dev": "npm run storybook",
+    "build": "node scripts/build-all.mjs",
+    "version:sync": "node scripts/sync-versions.mjs",
+    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "eslint ."
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -45,8 +46,12 @@
     "react-dom": "^18 || ^19"
   },
   "peerDependenciesMeta": {
-    "react": { "optional": false },
-    "react-dom": { "optional": false }
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    }
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
@@ -56,6 +61,11 @@
     "@radix-ui/react-separator": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "bfd-core": "*",
+    "bfd-icons": "*",
+    "bfd-patterns": "*",
+    "bfd-tables": "*",
+    "bfd-themes": "*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
@@ -92,5 +102,9 @@
     "vite": "^6.3.5",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-svgr": "^4.3.0"
-  }
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
 }

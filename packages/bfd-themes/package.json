@@ -1,0 +1,42 @@
+{
+  "name": "bfd-themes",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "*.css",
+    "./dist/register.js"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./register": {
+      "import": "./dist/register.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./tailwind": {
+      "types": "./dist/tailwind-preset.d.ts",
+      "import": "./dist/tailwind-preset.js"
+    }
+  },
+  "scripts": {
+    "build": "node ../../scripts/build-all.mjs",
+    "build:css": "npx @tailwindcss/cli -i ./styles/index.css -o ./dist/styles.css --minify"
+  },
+  "files": [
+    "dist"
+  ],
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDkirtiman/bharat-onco-frontend.git",
+    "directory": "packages/bfd-themes"
+  }
+}

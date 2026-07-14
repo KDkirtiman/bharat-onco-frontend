@@ -1,0 +1,1 @@
+export { PalliativeCareTab } from './PalliativeCareTab';
