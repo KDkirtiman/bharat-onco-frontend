@@ -1,12 +1,10 @@
 name: Deploy Storybook
 
+# Manual only. Run this against `master` or a `release/*` branch (via the
+# "Run workflow" branch dropdown) — never a feature branch — so published
+# docs always reflect reviewed, merged code.
 on:
-  push:
-    branches:
-      - master
-      - release/26.0.beta
-    tags:
-      - 'v*'
+  workflow_dispatch: {}
 
 permissions:
   contents: read

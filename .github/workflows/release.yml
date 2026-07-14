@@ -1,9 +1,14 @@
 name: Release Package
 
+# Manual only. Whoever runs this picks the branch to publish from (via the
+# "Run workflow" branch dropdown) — must be `master` or a `release/*` branch,
+# never a feature branch, since this is the step that actually ships to npm.
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (semver, no leading v — e.g. 0.1.2)'
+        required: true
 
 permissions:
   contents: write
@@ -24,14 +29,24 @@ jobs:
 
       - run: npm ci
 
-      # The git tag is the single source of truth for the version. Every
+      # The workflow input is the single source of truth for the version. Every
       # package publishes at this same version (lockstep monorepo release).
       # `npm pkg set` (unlike `npm version`) doesn't error when the version
-      # is already correct, so this is safe whether or not the tag's
-      # version matches what's already committed in package.json.
-      - run: npm pkg set version="${GITHUB_REF_NAME#v}"
+      # is already correct.
+      - run: npm pkg set version="${{ inputs.version }}"
       - run: npm run version:sync
       - run: npm run build
+
+      # Tag the commit on the branch this workflow was run against (never a
+      # feature branch, since publishing is only ever triggered manually
+      # against master/release/*). This is what `action-gh-release` below
+      # attaches the release to.
+      - name: Tag release
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "v${{ inputs.version }}"
+          git push origin "v${{ inputs.version }}"
 
       # Each bfd-* package is unscoped and public, so it publishes standalone
       # to registry.npmjs.org (not GitHub Packages, which requires
@@ -61,6 +76,7 @@ jobs:
       # notes from merged PRs/commits since the previous tag.
       - uses: softprops/action-gh-release@v2
         with:
+          tag_name: v${{ inputs.version }}
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
